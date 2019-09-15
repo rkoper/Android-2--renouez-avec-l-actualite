@@ -63,14 +63,17 @@ public class PageSearch extends AppCompatActivity {
             public void onClick(View view) {
                 Intent myIntent = new Intent(PageSearch.this,
                         PageSearchResult.class);
+                retrieveSettings();
+
                 myIntent.putExtra("fq", mSection);
                 myIntent.putExtra("q", mQueryTerm);
                 myIntent.putExtra("begin_date", mBeginDate);
                 myIntent.putExtra("end_date", mEndDate);
                 startActivity(myIntent);
-                retrieveSettings();
 
-            }});
+
+            }
+        });
 
         mButtonBeginDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +86,7 @@ public class PageSearch extends AppCompatActivity {
                 dialog.getWindow();
                 dialog.show();
             }
- });
+        });
         mButtonEndDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,31 +94,40 @@ public class PageSearch extends AppCompatActivity {
                 int year = cal.get(Calendar.YEAR);
                 final int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
+
+
                 DatePickerDialog dialog = new DatePickerDialog(PageSearch.this, mDateSetListenerEnd, year, month, day);
                 dialog.getActionBar();
                 dialog.show();
-            }});
+            }
+        });
 
-                mDateSetListenerBegin = new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int y, int m, int d) {
-                        m = m + 1;
-                        Log.d(TAG, "onDateSet : date" + m + "/" + d + "/" + y);
-                        String dateB = d + "/" + m + "/" + y;
-                        mButtonBeginDate.setText(dateB);
-                        mBeginDate = dateB;
-                    }
-                };
+        mDateSetListenerBegin = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int y, int m, int d) {
+                m = m + 1;
+                Log.d(TAG, "onDateSet : date" + m + d + y);
+                String dateB = y + "0" + m + "0" + d;
+                mButtonBeginDate.setText(dateB);
+                mBeginDate = dateB;
+            }
+        };
 
-                mDateSetListenerEnd = new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int y, int m, int d) {
-                        m = m + 1;
-                        Log.d(TAG, "onDateSet : date" + m + "/" + d + "/" + y);
-                        String dateE = d + "/" + m + "/" + y;
-                        mButtonEndDate.setText(dateE);
-                        mEndDate = dateE;
-                    }};}
+        mDateSetListenerEnd = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int y, int m, int d) {
+                m = m + 1;
+                Log.d(TAG, "onDateSet : date" + m + "" + d + "" + y);
+                String dateE = y + "0" + m + "0" + d;
+                mButtonEndDate.setText(dateE);
+                mEndDate = dateE;
+            }
+        };
+
+    }
+
+
+
 
 
             public boolean onCreateOptionsMenu(Menu menu) {
@@ -139,9 +151,11 @@ public class PageSearch extends AppCompatActivity {
         politics = (CheckBox) findViewById(R.id.checkBox_politics);
         sports = (CheckBox) findViewById(R.id.checkBox_sports);
         travels = (CheckBox) findViewById(R.id.checkBox_travel);
-        mEditTextSearchTerm = (EditText) findViewById(R.id.editText_search_term);
 
+        mEditTextSearchTerm = (EditText) findViewById(R.id.editText_search_term);
         mQueryTerm = mEditTextSearchTerm.getText().toString();
+
+
         if (arts.isChecked()){
             mCheckCheckBox = true;
             mSection = mSection+" Arts";
