@@ -20,7 +20,9 @@ import com.m.sofiane.mynews.R;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,14 +37,35 @@ public class tabSearch_fragment extends Fragment   {
     private RecyclerView rvFragment;
     private SearchResult rvdata;
     public DataAdapterResult rvAdapter ;
+    protected String mQueryTerm;
+    protected String mSection = "Category : ";
+    protected String mBeginDate;
+    protected String mEndDate;
+    private Map<String, String> researchValue = new HashMap<>();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater mInflater, @Nullable ViewGroup mContainer, @Nullable Bundle savedInstanceState) {
         View view = mInflater.inflate(R.layout.tabsearch_fragment, mContainer, false);
 
+        Intent myintent = getActivity().getIntent();
+        mQueryTerm = myintent.getStringExtra("q");
+        mSection= myintent.getStringExtra("fq");
+        mBeginDate = myintent.getStringExtra("begin_date");
+        mEndDate = myintent.getStringExtra("end_date");
 
-
+        if (mQueryTerm !=null) {
+            researchValue.put("q", mQueryTerm);
+        }
+        if (mSection !=null) {
+            researchValue.put("fq", mSection);
+        }
+        if (mBeginDate !=null) {
+            researchValue.put("begin_date", mBeginDate);
+        }
+        if (mEndDate !=null) {
+            researchValue.put("end_date", mEndDate);
+        }
 
         this.initUI4(view);
         return view;
@@ -59,19 +82,15 @@ public class tabSearch_fragment extends Fragment   {
 
     }
 
-    private void loadJSONResult(){
+private void loadJSONResult(){
         Retrofit retrofit2 = new Retrofit.Builder()
                 .baseUrl("https://api.nytimes.com/svc/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         final NYTimesService request = retrofit2.create(NYTimesService.class);
-        Call<SearchResult> call2 = request.getJSON4(
-                "q",
-                "fq",
-                "begin_date",
-                "end_date"
-                );
+        Call<SearchResult> call2 = request.getJSON4(researchValue);
+
         call2.enqueue(new Callback<SearchResult>() {
             public void onResponse(Call<SearchResult> call, Response<SearchResult> response) {
                 SearchResult jsonResponse2 = response.body();

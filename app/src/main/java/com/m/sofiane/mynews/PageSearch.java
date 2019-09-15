@@ -39,7 +39,7 @@ public class PageSearch extends AppCompatActivity {
     protected boolean mCheckEditText;
     protected int mCheckBoxChecked;
     protected String mQueryTerm;
-    protected String mSection = "Category : ";
+    protected String mSection ;
     protected String mBeginDate;
     protected String mEndDate;
     protected int mButtonClick;
@@ -53,7 +53,6 @@ public class PageSearch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_search);
         this.setPageTitle();
-        //    this.retrieveSettings();
 
         mButtonEndDate = (TextView) findViewById(R.id.button_picker_end_date);
         mButtonBeginDate = (TextView) findViewById(R.id.button_picker_begin_date);
@@ -64,10 +63,10 @@ public class PageSearch extends AppCompatActivity {
             public void onClick(View view) {
                 Intent myIntent = new Intent(PageSearch.this,
                         PageSearchResult.class);
-                myIntent.putExtra("sectionChecked", mSection);
-                myIntent.putExtra("queryTerm", mQueryTerm);
-                myIntent.putExtra("beginDate", mBeginDate);
-                myIntent.putExtra("endDate", mEndDate);
+                myIntent.putExtra("fq", mSection);
+                myIntent.putExtra("q", mQueryTerm);
+                myIntent.putExtra("begin_date", mBeginDate);
+                myIntent.putExtra("end_date", mEndDate);
                 startActivity(myIntent);
                 retrieveSettings();
 

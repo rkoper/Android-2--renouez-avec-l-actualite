@@ -73,11 +73,6 @@ public class PageSearchResult extends AppCompatActivity {
 
         setContentView(R.layout.activity_page_searchresult);
 
-        Intent myintent = getIntent();
-        mQueryTerm = myintent.getStringExtra("q");
-        mSection= myintent.getStringExtra("fq");
-        mBeginDate = myintent.getStringExtra("begin_date");
-        mEndDate = myintent.getStringExtra("end_date");
 
       //  mRequestQueue = Volley.newRequestQueue(this);
        // loadJSON4();

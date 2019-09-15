@@ -25,10 +25,7 @@ public interface NYTimesService {
     @GET("topstories/v2/sports.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
     Call<JSONResponse> getJSON2();
 
-   @GET("search/v2/articlesearch.json?&api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
-    Call<SearchResult> getJSON4
-    (@Query("q") String mQueryTerm,
-    @Query("fq") String mSection, @Nullable
-    @Query("begin_date") String mBeginDate, @Nullable
-    @Query("end_date") String mEndDate);
+    @GET("search/v2/articlesearch.json?&api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
+    Call<SearchResult> getJSON4(@QueryMap Map<String, String> researchValue);
+
 }
