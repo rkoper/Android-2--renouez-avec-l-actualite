@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.Printer;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -18,10 +19,12 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 import butterknife.BindView;
+import butterknife.internal.Utils;
 
 public class PageSearch extends AppCompatActivity {
 
     public static final String TAG = "PageSearch";
+
     @BindView(R.id.textView_begin_date) TextView beginDate;
     @BindView(R.id.button_picker_begin_date) TextView mButtonBeginDate;
     @BindView(R.id.button_picker_end_date) TextView mButtonEndDate;
@@ -35,6 +38,7 @@ public class PageSearch extends AppCompatActivity {
     @BindView( R.id.checkBox_travel) CheckBox travels;
 
 
+
     protected boolean mCheckCheckBox;
     protected boolean mCheckEditText;
     protected int mCheckBoxChecked;
@@ -45,6 +49,8 @@ public class PageSearch extends AppCompatActivity {
     protected int mButtonClick;
     private DatePickerDialog.OnDateSetListener mDateSetListenerBegin;
     private DatePickerDialog.OnDateSetListener mDateSetListenerEnd;
+    private String mDay;
+    private String mMonth;
 
 
 
@@ -53,6 +59,7 @@ public class PageSearch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_search);
         this.setPageTitle();
+
 
         mButtonEndDate = (TextView) findViewById(R.id.button_picker_end_date);
         mButtonBeginDate = (TextView) findViewById(R.id.button_picker_begin_date);
@@ -64,14 +71,11 @@ public class PageSearch extends AppCompatActivity {
                 Intent myIntent = new Intent(PageSearch.this,
                         PageSearchResult.class);
                 retrieveSettings();
-
                 myIntent.putExtra("fq", mSection);
                 myIntent.putExtra("q", mQueryTerm);
                 myIntent.putExtra("begin_date", mBeginDate);
                 myIntent.putExtra("end_date", mEndDate);
                 startActivity(myIntent);
-
-
             }
         });
 
@@ -94,8 +98,6 @@ public class PageSearch extends AppCompatActivity {
                 int year = cal.get(Calendar.YEAR);
                 final int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
-
-
                 DatePickerDialog dialog = new DatePickerDialog(PageSearch.this, mDateSetListenerEnd, year, month, day);
                 dialog.getActionBar();
                 dialog.show();
@@ -105,9 +107,18 @@ public class PageSearch extends AppCompatActivity {
         mDateSetListenerBegin = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int y, int m, int d) {
-                m = m + 1;
-                Log.d(TAG, "onDateSet : date" + m + d + y);
-                String dateB = y + "0" + m + "0" + d;
+                m = m+1;
+                if (m <= 9){
+                    mMonth = ""+0+m;
+                }else{
+                    mMonth = ""+m;}
+                if (d <= 9){
+                    mDay = ""+0+d;
+                }else{
+                    mDay = ""+d;}
+
+                Log.d(TAG, "onDateSet : date" + mMonth + mDay + y);
+                String dateB = y + "" + mMonth + "" + mDay;
                 mButtonBeginDate.setText(dateB);
                 mBeginDate = dateB;
             }
@@ -116,9 +127,18 @@ public class PageSearch extends AppCompatActivity {
         mDateSetListenerEnd = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int y, int m, int d) {
-                m = m + 1;
-                Log.d(TAG, "onDateSet : date" + m + "" + d + "" + y);
-                String dateE = y + "0" + m + "0" + d;
+                m = m+1;
+                if (m <= 9){
+                    mMonth = ""+0+m;
+                }else{
+                    mMonth = ""+m;}
+
+                if (d <= 9){
+                    mDay = ""+0+d;
+                }else{
+                    mDay = ""+d;}
+                Log.d(TAG, "onDateSet : date" + mMonth + "" + mDay + "" + y);
+                String dateE = y + "" + mMonth + "" + mDay;
                 mButtonEndDate.setText(dateE);
                 mEndDate = dateE;
             }
@@ -128,9 +148,7 @@ public class PageSearch extends AppCompatActivity {
 
 
 
-
-
-            public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
                 getMenuInflater().inflate(R.menu.activity_page_toolbar, menu);
                 return true;
             }
@@ -145,6 +163,10 @@ public class PageSearch extends AppCompatActivity {
             }
 
     protected void retrieveSettings(){
+
+        mEditTextSearchTerm = (EditText) findViewById(R.id.editText_search_term);
+        mQueryTerm = mEditTextSearchTerm.getText().toString();
+
         arts = (CheckBox) findViewById(R.id.checkBox_arts);
         buisness = (CheckBox) findViewById(R.id.checkBox_business);
         entrepreneurs = (CheckBox) findViewById(R.id.checkBox_entrepreneurs);
@@ -152,40 +174,22 @@ public class PageSearch extends AppCompatActivity {
         sports = (CheckBox) findViewById(R.id.checkBox_sports);
         travels = (CheckBox) findViewById(R.id.checkBox_travel);
 
-        mEditTextSearchTerm = (EditText) findViewById(R.id.editText_search_term);
-        mQueryTerm = mEditTextSearchTerm.getText().toString();
 
+        mSection ="news_desk(";
+        if (arts.isChecked())
+        { mSection += "\"Arts\""; }
+        if (buisness.isChecked())
+        {mSection+= "\"buisness\""; }
+        if(entrepreneurs.isChecked())
+        {mSection += "\"entrepreneurs\""; }
+        if(politics.isChecked())
+        {mSection += "\"politics\"";
+        }if(sports.isChecked()){
+            mSection += "\"sports\"";
+        }if(travels.isChecked())
+        {mSection += "\"travels\""; }
+        mSection = mSection+")";
 
-        if (arts.isChecked()){
-            mCheckCheckBox = true;
-            mSection = mSection+" Arts";
-            mCheckBoxChecked = 0;
-        }else if(buisness.isChecked()){
-            mCheckCheckBox = true;
-            mSection = mSection+" Business Day";
-            mCheckBoxChecked = 1;
-        }else if(entrepreneurs.isChecked()){
-            mCheckCheckBox = true;
-            mSection = mSection+" Entrepreneurs";
-            mCheckBoxChecked = 2;
-        }else if(politics.isChecked()){
-            mCheckCheckBox = true;
-            mSection = mSection+" Politics";
-            mCheckBoxChecked = 3;
-        }else if(sports.isChecked()){
-            mCheckCheckBox = true;
-            mSection = mSection+" Sports";
-            mCheckBoxChecked = 4;
-        }else if(travels.isChecked()){
-            mCheckCheckBox = true;
-            mSection = mSection+" Travel";
-            mCheckBoxChecked = 5;
-        }else{
-            mCheckCheckBox = false;
-            Toast.makeText(getBaseContext(), "Choose a section please", Toast.LENGTH_LONG).show();
-        }
     }
-
         }
-
 
