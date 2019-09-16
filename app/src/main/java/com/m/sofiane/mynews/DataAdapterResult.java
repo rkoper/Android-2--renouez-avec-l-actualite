@@ -18,6 +18,9 @@ import com.bumptech.glide.Glide;
 import com.m.sofiane.mynews.Activity.SubActivity;
 import com.m.sofiane.mynews.Modele.ModeleSearch.SearchResult;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,7 +31,10 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
     private SearchResult results1;
     private Context contextSearch;
     String url;
-    private SearchResult.Doc result2;
+    private String mPubDate;
+    private String mSectionSub;
+    private String mSection;
+    private String mSub1;
 
 
     public DataAdapterResult (SearchResult results1, Context context) {
@@ -41,8 +47,6 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
         View view = LayoutInflater.from(contextSearch).inflate(R.layout.card_row ,parent, false);
         final ViewHolder vHolder = new DataAdapterResult.ViewHolder(view);
 
-
-
         return vHolder;
     }
 
@@ -50,15 +54,37 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
     @Override
     public void onBindViewHolder(@NonNull DataAdapterResult.ViewHolder holder, final int position) {
         SearchResult.Doc current = results1.getResponse().getDocs().get(position);
-        holder.CR_date.setText(current.getPubDate());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat str = new SimpleDateFormat("dd/mm/yyyy");
+        Date today = null;
+        try {
+            today = sdf.parse(current.getPubDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        mPubDate = str.format(today);
+
+        holder.CR_date.setText(mPubDate);
+
+        mSection = current.getSectionName();
+
+        if (current.getSubsection() == null) {
+            mSub1="";
+          } else {mSub1 = " > " +current.getSubsection();
+            }
+
+        mSectionSub = mSection + mSub1;
+        holder.CR_category.setText(mSectionSub);
         holder.CR_title.setText(current.getSnippet());
-        holder.CR_cat.setText(current.getSectionName());
 
 
 
-        if (!current.getMultimedia().isEmpty())
+        if (current.getMultimedia().isEmpty()){
+            url="";
+        }
+        else {
             url ="https://static01.nyt.com/"+current.getMultimedia().get(position).getUrl();
-            Glide.with(contextSearch).load(url).into(holder.CR_multimedia);
+            Glide.with(contextSearch).load(url).into(holder.CR_multimedia);}
 
 
 
@@ -82,7 +108,7 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView CR_date,CR_title, CR_cat;
+        private TextView CR_date,CR_title, CR_category;
         private ImageView CR_multimedia;
         private LinearLayout item_contact;
 
@@ -91,7 +117,7 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
             item_contact = (LinearLayout) itemview.findViewById(R.id.contact_item_id) ;
             CR_date= (TextView) itemview.findViewById(R.id.CR_date);
             CR_title = (TextView) itemview.findViewById(R.id.CR_title);
-            CR_cat= (TextView) itemview.findViewById(R.id.CR_category);
+            CR_category= (TextView) itemview.findViewById(R.id.CR_category);
             CR_multimedia = (ImageView) itemview.findViewById(R.id.imageURL);
         }
     }

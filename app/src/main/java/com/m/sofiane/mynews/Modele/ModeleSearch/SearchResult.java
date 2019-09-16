@@ -466,6 +466,9 @@ public class SearchResult {
             @SerializedName("section_name")
             @Expose
             private String sectionName;
+            @SerializedName("subsection_name")
+            @Expose
+            private String subsection;
 
             public String getWebUrl() {
                 return webUrl;
@@ -607,10 +610,17 @@ public class SearchResult {
                 return sectionName;
             }
 
+            public String getSubsection() {
+                return subsection;
+            }
+
             public void setSectionName(String sectionName) {
                 this.sectionName = sectionName;
             }
-        }
+
+    public void setSubsection(String subsection) {
+        this.subsection = subsection;
+    }
 
         public class Multimedium {
 
@@ -741,7 +751,7 @@ public class SearchResult {
 
 
 
-    }
+    }}
 
 /**
 

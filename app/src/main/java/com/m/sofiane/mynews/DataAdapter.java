@@ -15,6 +15,9 @@ import com.bumptech.glide.Glide;
 import com.m.sofiane.mynews.Activity.SubActivity;
 import com.m.sofiane.mynews.Modele.ModeleBase.News;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -25,6 +28,11 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     private List<News.Articles> results;
     private Context context;
+    private String mPubDate;
+    private String mSectionSub;
+    private String mSection;
+    private String mSub;
+
 
     public DataAdapter(List<News.Articles> results, Context context) {
         this.results = results;
@@ -42,8 +50,24 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull DataAdapter.ViewHolder holder, final int position) {
         News.Articles current = results.get(position);
-        holder.CR_date.setText(current.getPublishedDate());
-        holder.CR_category.setText(current.getSection());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat str = new SimpleDateFormat("dd/mm/yyyy");
+        Date today = null;
+        try {
+            today = sdf.parse(current.getPublishedDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        mPubDate = str.format(today);
+        holder.CR_date.setText(mPubDate);
+
+        mSection = current.getSection();
+
+        if (!current.getSubsection().isEmpty()){
+      mSub=" > " + current.getSubsection();}
+
+            mSectionSub = mSection +mSub;
+        holder.CR_category.setText(mSectionSub);
         holder.CR_title.setText(current.getTitle());
 
         if (!current.getMultimedia().isEmpty())

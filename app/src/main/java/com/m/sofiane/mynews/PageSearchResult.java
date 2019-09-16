@@ -45,21 +45,11 @@ import static java.security.AccessController.getContext;
 
 
 public class PageSearchResult extends AppCompatActivity {
-    public DataAdapterResult rvAdapter4;
-    private List<SearchResult> rvdata4;
-    private RequestQueue mRequestQueue;
 
 
     @BindView(R.id.RecyclerViewResult)
      RecyclerView rvFragment4;
 
-    protected CompositeDisposable disposable = new CompositeDisposable();
-    Map<String, String> queryData = new HashMap<>();
-    private String mBeginDate;
-    private String mEndDate;
-    private String mQueryTerm;
-    private String mSection;
-    private Fragment mFragment;
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -74,46 +64,8 @@ public class PageSearchResult extends AppCompatActivity {
         setContentView(R.layout.activity_page_searchresult);
 
 
-      //  mRequestQueue = Volley.newRequestQueue(this);
-       // loadJSON4();
         setPageTitle();
-        getSettingsURL();
-
     }
-  /**  private void loadJSON4() {
-        String url = "https://api.nytimes.com/svc/articlesearch.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray jsonArray = response.getJSONArray("response");
-                    for (int i = 0; i < jsonArray.length(); i++) {
-
-                        JSONObject respons = jsonArray.getJSONObject(i);
-                        String createTitle = respons.getString("title");
-                        String createShortUrl = respons.getString("shorturl");
-
-                        rvdata4.add(new SearchResult(createShortUrl, createTitle));
-                    }
-
-                    rvAdapter4 = new DataAdapterResult(rvdata4, PageSearchResult.this);
-                    rvFragment4.setAdapter(rvAdapter4);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-
-        });
-
-        mRequestQueue.add(request);
-    }
-**/
         private void setPageTitle() {
 
         Toolbar toolbar = findViewById(R.id.simple_toolbar);
@@ -124,20 +76,6 @@ public class PageSearchResult extends AppCompatActivity {
         getSupportActionBar().setTitle("Search Articles");
     }
 
-    private void getSettingsURL(){
-        mBeginDate = getIntent().getStringExtra("beginDate");
-        mEndDate = getIntent().getStringExtra("endDate");
-        mQueryTerm = getIntent().getStringExtra("queryTerm");
-        mSection = getIntent().getStringExtra("sectionChecked");
 
-        if (mBeginDate != null){
-            queryData.put("begin_date", mBeginDate);
-        }
-        if (mEndDate != null){
-            queryData.put("end_date", mEndDate);
-        }
-        queryData.put("q", mQueryTerm);
-        queryData.put("fq", mSection);
-    }
 }
 
