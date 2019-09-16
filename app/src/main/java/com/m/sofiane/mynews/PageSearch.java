@@ -161,6 +161,11 @@ public class PageSearch extends AppCompatActivity {
                 getSupportActionBar().setDisplayShowHomeEnabled(true);
                 getSupportActionBar().setTitle("Search Articles");
             }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
     protected void retrieveSettings(){
 
