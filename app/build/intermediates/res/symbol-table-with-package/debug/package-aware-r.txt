@@ -1086,6 +1086,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id activity_main_toolbar
+id activity_notification_words_edit
 id activity_notifications_switch
 id add
 id alertTitle
@@ -1113,7 +1114,6 @@ id checkBox_politics
 id checkBox_sports
 id checkBox_travel
 id checkbox
-id checkbox_container
 id chronometer
 id clip_horizontal
 id clip_vertical
@@ -1229,17 +1229,10 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
-id search_articles_arts
-id search_articles_business
-id search_articles_entrepreneurs
-id search_articles_politics
-id search_articles_sports
-id search_articles_travel
 id search_badge
 id search_bar
 id search_button
 id search_close_btn
-id search_editText
 id search_edit_frame
 id search_fragment_container
 id search_go_btn
@@ -1272,7 +1265,6 @@ id status_bar_latest_event_content
 id stretch
 id submenuarrow
 id submit_area
-id switch_button_notification
 id tabMode
 id tab_layout
 id tag_transition_group
@@ -1402,8 +1394,6 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
-layout search_checkbox
-layout search_q
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material

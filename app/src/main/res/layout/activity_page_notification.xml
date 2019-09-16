@@ -1,56 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PageSearch"
-    android:orientation="vertical">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/simple_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentTop="true"
-        android:elevation="6dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="@android:color/holo_blue_dark"
-        android:minHeight="?attr/actionBarSize"
-        app:titleTextColor="@android:color/white"/>
+    android:orientation="vertical"
+    tools:context=".Activity.PageNotification">
+
 
     <include
         layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="-394dp" />
+        android:layout_height="wrap_content" />
 
-    <include
-        layout="@layout/search_q"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="64dp" />
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
-    <include
-        layout="@layout/search_checkbox"
-        android:layout_width="335dp"
-        android:layout_height="wrap_content"
+        <EditText
+            android:id="@+id/activity_notification_words_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:hint="Search query term">
+
+        </EditText>
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="393dp"
+        android:layout_height="146dp"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:textAlignment="center">
+
+        <CheckBox
+            android:id="@+id/checkBox_arts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Arts" />
+
+        <CheckBox
+            android:id="@+id/checkBox_entrepreneurs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp"
+            android:text="Entrepreneurs" />
+
+        <CheckBox
+            android:id="@+id/checkBox_business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="55dp"
+            android:text="Business" />
+
+        <CheckBox
+            android:id="@+id/checkBox_politics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="190dp"
+            android:layout_marginTop="10dp"
+            android:text="Politics" />
+
+        <CheckBox
+            android:id="@+id/checkBox_sports"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="190dp"
+            android:layout_marginTop="55dp"
+            android:text="Sports" />
+
+        <CheckBox
+            android:id="@+id/checkBox_travel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="190dp"
+            android:layout_marginTop="100dp"
+            android:text="Travel" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="200dp" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@android:color/background_dark" />
+
 
     <Switch
         android:id="@+id/activity_notifications_switch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="350dp"
-        android:layout_marginEnd="15dp"
-        android:text="@string/notifications_text"
-        />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:text="Enable notifications (once per day)"
+        android:textSize="16sp" />
 
-
-</RelativeLayout>
+</LinearLayout>

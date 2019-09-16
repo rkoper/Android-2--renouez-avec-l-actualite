@@ -14,28 +14,28 @@ public class PageSearch$$ViewBinder<T extends PageSearch> implements ViewBinder<
   public Unbinder bind(final Finder finder, final T target, Object source) {
     InnerUnbinder unbinder = createUnbinder(target);
     View view;
-    view = finder.findRequiredView(source, 2131230954, "field 'beginDate'");
-    target.beginDate = finder.castView(view, 2131230954, "field 'beginDate'");
-    view = finder.findRequiredView(source, 2131230768, "field 'mButtonBeginDate'");
-    target.mButtonBeginDate = finder.castView(view, 2131230768, "field 'mButtonBeginDate'");
-    view = finder.findRequiredView(source, 2131230769, "field 'mButtonEndDate'");
-    target.mButtonEndDate = finder.castView(view, 2131230769, "field 'mButtonEndDate'");
+    view = finder.findRequiredView(source, 2131230946, "field 'beginDate'");
+    target.beginDate = finder.castView(view, 2131230946, "field 'beginDate'");
+    view = finder.findRequiredView(source, 2131230769, "field 'mButtonBeginDate'");
+    target.mButtonBeginDate = finder.castView(view, 2131230769, "field 'mButtonBeginDate'");
+    view = finder.findRequiredView(source, 2131230770, "field 'mButtonEndDate'");
+    target.mButtonEndDate = finder.castView(view, 2131230770, "field 'mButtonEndDate'");
     view = finder.findRequiredView(source, 2131230806, "field 'mEditTextSearchTerm'");
     target.mEditTextSearchTerm = finder.castView(view, 2131230806, "field 'mEditTextSearchTerm'");
-    view = finder.findRequiredView(source, 2131230770, "field 'mSearchButton'");
-    target.mSearchButton = finder.castView(view, 2131230770, "field 'mSearchButton'");
-    view = finder.findRequiredView(source, 2131230776, "field 'arts'");
-    target.arts = finder.castView(view, 2131230776, "field 'arts'");
-    view = finder.findRequiredView(source, 2131230777, "field 'buisness'");
-    target.buisness = finder.castView(view, 2131230777, "field 'buisness'");
-    view = finder.findRequiredView(source, 2131230778, "field 'entrepreneurs'");
-    target.entrepreneurs = finder.castView(view, 2131230778, "field 'entrepreneurs'");
-    view = finder.findRequiredView(source, 2131230779, "field 'politics'");
-    target.politics = finder.castView(view, 2131230779, "field 'politics'");
-    view = finder.findRequiredView(source, 2131230780, "field 'sports'");
-    target.sports = finder.castView(view, 2131230780, "field 'sports'");
-    view = finder.findRequiredView(source, 2131230781, "field 'travels'");
-    target.travels = finder.castView(view, 2131230781, "field 'travels'");
+    view = finder.findRequiredView(source, 2131230771, "field 'mSearchButton'");
+    target.mSearchButton = finder.castView(view, 2131230771, "field 'mSearchButton'");
+    view = finder.findRequiredView(source, 2131230777, "field 'arts'");
+    target.arts = finder.castView(view, 2131230777, "field 'arts'");
+    view = finder.findRequiredView(source, 2131230778, "field 'buisness'");
+    target.buisness = finder.castView(view, 2131230778, "field 'buisness'");
+    view = finder.findRequiredView(source, 2131230779, "field 'entrepreneurs'");
+    target.entrepreneurs = finder.castView(view, 2131230779, "field 'entrepreneurs'");
+    view = finder.findRequiredView(source, 2131230780, "field 'politics'");
+    target.politics = finder.castView(view, 2131230780, "field 'politics'");
+    view = finder.findRequiredView(source, 2131230781, "field 'sports'");
+    target.sports = finder.castView(view, 2131230781, "field 'sports'");
+    view = finder.findRequiredView(source, 2131230782, "field 'travels'");
+    target.travels = finder.castView(view, 2131230782, "field 'travels'");
     return unbinder;
   }
 
