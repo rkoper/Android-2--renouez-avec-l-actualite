@@ -1029,6 +1029,7 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_note_add_black
 drawable ic_search_black_24dp
+drawable logonyt
 drawable menu
 drawable menuvertical
 drawable mtrl_snackbar_background
@@ -1086,8 +1087,6 @@ id action_text
 id actions
 id activity_chooser_view_content
 id activity_main_toolbar
-id activity_notification_words_edit
-id activity_notifications_switch
 id add
 id alertTitle
 id all
@@ -1108,11 +1107,17 @@ id center_horizontal
 id center_vertical
 id chains
 id checkBox_arts
+id checkBox_arts2
 id checkBox_business
+id checkBox_business2
 id checkBox_entrepreneurs
+id checkBox_entrepreneurs2
 id checkBox_politics
+id checkBox_politics2
 id checkBox_sports
+id checkBox_sports2
 id checkBox_travel
+id checkBox_travel2
 id checkbox
 id chronometer
 id clip_horizontal
@@ -1137,6 +1142,7 @@ id direct
 id disableHome
 id drawer_layout
 id editText_search_term
+id editText_search_term2
 id edit_query
 id end
 id end_padder
@@ -1265,6 +1271,7 @@ id status_bar_latest_event_content
 id stretch
 id submenuarrow
 id submit_area
+id switchCheck
 id tabMode
 id tab_layout
 id tag_transition_group
@@ -1276,6 +1283,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textView
+id textView2
 id textView_begin_date
 id textView_end_date
 id text_input_password_toggle

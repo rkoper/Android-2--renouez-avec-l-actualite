@@ -1,4 +1,4 @@
-#Mon Sep 16 04:03:10 CEST 2019
+#Tue Sep 17 23:47:50 CEST 2019
 base.0=/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

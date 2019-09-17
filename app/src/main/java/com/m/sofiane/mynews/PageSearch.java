@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.util.Printer;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -14,12 +13,10 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
 import butterknife.BindView;
-import butterknife.internal.Utils;
 
 public class PageSearch extends AppCompatActivity {
 
@@ -39,14 +36,10 @@ public class PageSearch extends AppCompatActivity {
 
 
 
-    protected boolean mCheckCheckBox;
-    protected boolean mCheckEditText;
-    protected int mCheckBoxChecked;
     protected String mQueryTerm;
     protected String mSection ;
     protected String mBeginDate;
     protected String mEndDate;
-    protected int mButtonClick;
     private DatePickerDialog.OnDateSetListener mDateSetListenerBegin;
     private DatePickerDialog.OnDateSetListener mDateSetListenerEnd;
     private String mDay;

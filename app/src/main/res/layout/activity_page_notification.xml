@@ -25,7 +25,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/activity_notification_words_edit"
+            android:id="@+id/editText_search_term2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
@@ -44,7 +44,7 @@
         android:textAlignment="center">
 
         <CheckBox
-            android:id="@+id/checkBox_arts"
+            android:id="@+id/checkBox_arts2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -52,7 +52,7 @@
             android:text="Arts" />
 
         <CheckBox
-            android:id="@+id/checkBox_entrepreneurs"
+            android:id="@+id/checkBox_entrepreneurs2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -60,7 +60,7 @@
             android:text="Entrepreneurs" />
 
         <CheckBox
-            android:id="@+id/checkBox_business"
+            android:id="@+id/checkBox_business2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -68,7 +68,7 @@
             android:text="Business" />
 
         <CheckBox
-            android:id="@+id/checkBox_politics"
+            android:id="@+id/checkBox_politics2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="190dp"
@@ -76,7 +76,7 @@
             android:text="Politics" />
 
         <CheckBox
-            android:id="@+id/checkBox_sports"
+            android:id="@+id/checkBox_sports2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="190dp"
@@ -84,7 +84,7 @@
             android:text="Sports" />
 
         <CheckBox
-            android:id="@+id/checkBox_travel"
+            android:id="@+id/checkBox_travel2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="190dp"
@@ -104,14 +104,22 @@
 
 
     <Switch
-        android:id="@+id/activity_notifications_switch"
+        android:id="@+id/switchCheck"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
+        android:checked="false"
         android:text="Enable notifications (once per day)"
         android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="401dp"
+        android:layout_height="17dp"
+        android:layout_centerHorizontal="false"
+        android:text="Test"
+        android:textAlignment="viewEnd" />
 
 </LinearLayout>
