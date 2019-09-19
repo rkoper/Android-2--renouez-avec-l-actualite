@@ -36,11 +36,6 @@
         <activity android:name="com.m.sofiane.mynews.Activity.PageAbout" />
         <activity android:name="com.m.sofiane.mynews.Activity.SubActivity" />
         <activity android:name="com.m.sofiane.mynews.PageSearchResult" />
-
-        <provider
-            android:name="com.android.tools.ir.server.InstantRunContentProvider"
-            android:authorities="com.m.sofiane.mynews.com.android.tools.ir.server.InstantRunContentProvider"
-            android:multiprocess="true" />
     </application>
 
 </manifest>

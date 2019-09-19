@@ -5114,7 +5114,7 @@ public final class R {
     public static final int ic_mtrl_chip_close_circle=0x7f070073;
     public static final int ic_note_add_black=0x7f070074;
     public static final int ic_search_black_24dp=0x7f070075;
-    public static final int logonyt=0x7f070076;
+    public static final int logonyta=0x7f070076;
     public static final int menu=0x7f070077;
     public static final int menuvertical=0x7f070078;
     public static final int mtrl_snackbar_background=0x7f070079;

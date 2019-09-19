@@ -10,6 +10,16 @@ import java.util.List;
  */
 public class News {
 
+    @SerializedName("news")
+    @Expose
+    private List<News2> news = null;
+
+    public List<News2> getnews() {
+        return news;
+    }
+
+    public class News2 {}
+
     @SerializedName("results")
     @Expose
     private List<Articles> results = null;

@@ -1028,7 +1028,7 @@ int drawable ic_mtrl_chip_checked_circle 0x7f070072
 int drawable ic_mtrl_chip_close_circle 0x7f070073
 int drawable ic_note_add_black 0x7f070074
 int drawable ic_search_black_24dp 0x7f070075
-int drawable logonyt 0x7f070076
+int drawable logonyta 0x7f070076
 int drawable menu 0x7f070077
 int drawable menuvertical 0x7f070078
 int drawable mtrl_snackbar_background 0x7f070079

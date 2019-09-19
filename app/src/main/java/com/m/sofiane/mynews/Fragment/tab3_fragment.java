@@ -64,7 +64,7 @@ public class tab3_fragment  extends Fragment {
                 .build();
 
         NYTimesService request = retrofit.create(NYTimesService.class);
-        Call<JSONResponse> call = request.getJSON2();
+        Call<JSONResponse> call = request.getJSON3();
         call.enqueue(new Callback<JSONResponse>() {
             @Override
             public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {

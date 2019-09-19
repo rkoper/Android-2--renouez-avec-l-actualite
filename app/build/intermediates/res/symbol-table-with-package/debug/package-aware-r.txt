@@ -1029,7 +1029,7 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_note_add_black
 drawable ic_search_black_24dp
-drawable logonyt
+drawable logonyta
 drawable menu
 drawable menuvertical
 drawable mtrl_snackbar_background

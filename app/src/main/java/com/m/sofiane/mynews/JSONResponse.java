@@ -7,6 +7,7 @@ import com.m.sofiane.mynews.Modele.ModeleBase.News;
  */
 public class JSONResponse {
 
+
     private News.Articles[] results;
 
     public JSONResponse(News.Articles[] results) {

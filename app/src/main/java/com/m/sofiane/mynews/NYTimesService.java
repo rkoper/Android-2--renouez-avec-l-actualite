@@ -1,5 +1,7 @@
 package com.m.sofiane.mynews;
 
+import com.m.sofiane.mynews.Fragment.tab2_fragment;
+import com.m.sofiane.mynews.Modele.ModeleMost.Most;
 import com.m.sofiane.mynews.Modele.ModeleSearch.SearchResult;
 
 import java.util.Map;
@@ -19,11 +21,12 @@ public interface NYTimesService {
     @GET("topstories/v2/home.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
     Call<JSONResponse> getJSON();
 
-    @GET("topstories/v2/home.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
-    Call<JSONResponse> getJSON3();
+  //  @GET("topstories/v2/home.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
+  @GET("mostpopular/v2/viewed/7.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
+    Call<JSONResponse> getJSON2();
 
     @GET("topstories/v2/sports.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
-    Call<JSONResponse> getJSON2();
+    Call<JSONResponse> getJSON3();
 
     @GET("search/v2/articlesearch.json?&api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
     Call<SearchResult> getJSON4(@QueryMap Map<String, String> researchValue);

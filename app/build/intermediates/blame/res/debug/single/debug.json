@@ -1132,6 +1132,10 @@
         "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/1e9179abc36fc0e1642a90eefafa2c32/res/drawable/abc_seekbar_tick_mark_material.xml"
     },
     {
+        "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable-mdpi_logonyta.png.flat",
+        "source": "/Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/res/drawable-mdpi/logonyta.png"
+    },
+    {
         "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/layout_design_bottom_sheet_dialog.xml.flat",
         "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/0c56117c765798ff244083ea4f578d6e/res/layout/design_bottom_sheet_dialog.xml"
     },
@@ -1946,10 +1950,6 @@
     {
         "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/layout_activity_page_search.xml.flat",
         "source": "/Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/res/layout/activity_page_search.xml"
-    },
-    {
-        "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable-mdpi_logonyt.png.flat",
-        "source": "/Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/res/drawable-mdpi/logonyt.png"
     },
     {
         "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",

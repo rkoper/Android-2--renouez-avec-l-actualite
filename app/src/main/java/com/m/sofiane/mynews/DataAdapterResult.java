@@ -80,7 +80,7 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
 
 
         if (current.getMultimedia().isEmpty()){
-            url="";
+            Glide.with(contextSearch).load(R.drawable.logonyta).into(holder.CR_multimedia);
         }
         else {
             url ="https://static01.nyt.com/"+current.getMultimedia().get(position).getUrl();

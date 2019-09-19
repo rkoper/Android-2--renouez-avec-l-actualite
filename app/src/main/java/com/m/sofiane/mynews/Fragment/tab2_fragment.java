@@ -15,8 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.m.sofiane.mynews.DataAdapter;
+import com.m.sofiane.mynews.DataAdapterMost;
 import com.m.sofiane.mynews.JSONResponse;
+import com.m.sofiane.mynews.JSONResponseMost;
 import com.m.sofiane.mynews.Modele.ModeleBase.News;
+import com.m.sofiane.mynews.Modele.ModeleMost.Most;
 import com.m.sofiane.mynews.R;
 import com.m.sofiane.mynews.NYTimesService;
 
@@ -64,7 +67,7 @@ public class tab2_fragment  extends Fragment {
                 .build();
 
         NYTimesService request = retrofit.create(NYTimesService.class);
-        Call<JSONResponse> call = request.getJSON3();
+        Call<JSONResponse> call = request.getJSON2();
         call.enqueue(new Callback<JSONResponse>() {
             @Override
             public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
