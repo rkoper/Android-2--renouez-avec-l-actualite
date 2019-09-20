@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.m.sofiane.mynews.DataAdapter;
+import com.m.sofiane.mynews.DataAdapterMost;
 import com.m.sofiane.mynews.JSONResponse;
 import com.m.sofiane.mynews.Modele.ModeleBase.News;
 import com.m.sofiane.mynews.R;

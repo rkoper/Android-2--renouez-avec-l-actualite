@@ -20,9 +20,9 @@ public class News {
 
     public class News2 {}
 
-    @SerializedName("results")
-    @Expose
-    private List<Articles> results = null;
+    //@SerializedName("results")
+    //@Expose
+   // private List<Articles> results = null;
     @SerializedName("response")
     @Expose
     private Response response;
@@ -33,9 +33,9 @@ public class News {
         return response;
     }
 
-    public List<Articles> getResults() {
-        return results;
-    }
+    //public List<Articles> getResults() {
+      //  return results;
+    // }
 
     public String getStatus() {
         return status;

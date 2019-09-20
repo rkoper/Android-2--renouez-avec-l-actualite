@@ -1,16 +1,11 @@
 package com.m.sofiane.mynews;
 
-import com.m.sofiane.mynews.Fragment.tab2_fragment;
-import com.m.sofiane.mynews.Modele.ModeleMost.Most;
 import com.m.sofiane.mynews.Modele.ModeleSearch.SearchResult;
 
 import java.util.Map;
 
-import io.reactivex.Observable;
-import io.reactivex.annotations.Nullable;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 /**
@@ -22,7 +17,7 @@ public interface NYTimesService {
     Call<JSONResponse> getJSON();
 
   //  @GET("topstories/v2/home.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
-  @GET("mostpopular/v2/viewed/7.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
+   @GET("mostpopular/v2/viewed/7.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
     Call<JSONResponse> getJSON2();
 
     @GET("topstories/v2/sports.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")

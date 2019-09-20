@@ -17,11 +17,9 @@ import android.view.ViewGroup;
 import com.m.sofiane.mynews.DataAdapter;
 import com.m.sofiane.mynews.DataAdapterMost;
 import com.m.sofiane.mynews.JSONResponse;
-import com.m.sofiane.mynews.JSONResponseMost;
 import com.m.sofiane.mynews.Modele.ModeleBase.News;
-import com.m.sofiane.mynews.Modele.ModeleMost.Most;
-import com.m.sofiane.mynews.R;
 import com.m.sofiane.mynews.NYTimesService;
+import com.m.sofiane.mynews.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class tab2_fragment  extends Fragment {
     private RecyclerView rvFragment;
     private List<News.Articles> rvData;
-    public DataAdapter rvAdapter ;
+    public DataAdapterMost rvAdapter ;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater mInflater, @Nullable ViewGroup mContainer, @Nullable Bundle savedInstanceState) {
@@ -52,7 +50,7 @@ public class tab2_fragment  extends Fragment {
 
     private void  initUI2(View view) {
         this.rvData = new ArrayList<>();
-        this.rvAdapter = new DataAdapter(this.rvData, getContext());
+        this.rvAdapter = new DataAdapterMost(this.rvData, getContext());
         rvFragment = view.findViewById(R.id.RecyclerViewTwo);
         rvFragment.setAdapter(rvAdapter);
         rvFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -73,7 +71,7 @@ public class tab2_fragment  extends Fragment {
             public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
                 JSONResponse jsonResponse = response.body();
                 rvData = new ArrayList<>(Arrays.asList(jsonResponse.getResults()));
-                rvAdapter = new DataAdapter(rvData, getContext());
+                rvAdapter = new DataAdapterMost(rvData, getContext());
                 rvFragment.setAdapter(rvAdapter);
 
 
