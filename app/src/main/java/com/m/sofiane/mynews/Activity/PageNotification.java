@@ -1,5 +1,8 @@
 package com.m.sofiane.mynews.Activity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,9 +17,12 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.m.sofiane.mynews.MyAlarm;
 import com.m.sofiane.mynews.PageSearch;
 import com.m.sofiane.mynews.PageSearchResult;
 import com.m.sofiane.mynews.R;
+
+import java.util.Calendar;
 
 
 public class PageNotification extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
@@ -73,6 +79,8 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+
             if(mSwitch.isChecked()) {
                mText.setText("Test : switch on");
                 CheckBox arts;
@@ -117,11 +125,38 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
 
                mSection = mSection + "Test";
 
+                setAlarm();
+
             }
             else {
                 mText.setText("Test : Switch off");
             }
+            
+
     }
+
+    private void setAlarm() {
+
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, MyAlarm.class);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0 );
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 12);
+        calendar.set(Calendar.MINUTE, 30);
+        calendar.set(Calendar.SECOND,00);
+
+        long startUpTime = calendar.getTimeInMillis();
+        if (System.currentTimeMillis() > startUpTime) {
+            startUpTime = startUpTime + 24*60*60*1000;
+        }
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
+                startUpTime, AlarmManager.INTERVAL_DAY, pendingIntent);
+    }
+
+
 }
 
 
