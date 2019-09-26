@@ -1,4 +1,4 @@
-package com.m.sofiane.mynews.Modele.ModeleBase;
+package com.m.sofiane.mynews.modele.ModeleBase;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

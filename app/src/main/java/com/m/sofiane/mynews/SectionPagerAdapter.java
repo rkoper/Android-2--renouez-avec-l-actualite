@@ -4,9 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.m.sofiane.mynews.Fragment.tab1_fragment;
-import com.m.sofiane.mynews.Fragment.tab2_fragment;
-import com.m.sofiane.mynews.Fragment.tab3_fragment;
+import com.m.sofiane.mynews.fragment.tab1_fragment;
+import com.m.sofiane.mynews.fragment.tab2_fragment;
+import com.m.sofiane.mynews.fragment.tab3_fragment;
 
 /**
  * created by Sofiane M. 20/06/2019

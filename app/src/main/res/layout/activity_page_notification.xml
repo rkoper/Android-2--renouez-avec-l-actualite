@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.PageNotification">
+    tools:context=".activity.PageNotification">
 
 
     <include
@@ -116,8 +116,8 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="401dp"
-        android:layout_height="17dp"
+        android:layout_width="344dp"
+        android:layout_height="27dp"
         android:layout_centerHorizontal="false"
         android:text="Test"
         android:textAlignment="viewEnd" />

@@ -1,4 +1,4 @@
-package com.m.sofiane.mynews.Activity;
+package com.m.sofiane.mynews.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
 
 
-import com.m.sofiane.mynews.Modele.ModeleBase.News;
+import com.m.sofiane.mynews.modele.ModeleBase.News;
 import com.m.sofiane.mynews.R;
 
 import java.util.List;

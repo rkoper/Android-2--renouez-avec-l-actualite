@@ -1,4 +1,4 @@
-package com.m.sofiane.mynews.Activity;
+package com.m.sofiane.mynews.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(Page_About);
                 break;
             case R.id.notification:
-                Intent Page_Notif = new Intent(MainActivity.this, PageNotification.class);
+                Intent Page_Notif = new Intent(MainActivity.this,PageNotification.class);
                 startActivity(Page_Notif);
                 break;
             case R.id.help:

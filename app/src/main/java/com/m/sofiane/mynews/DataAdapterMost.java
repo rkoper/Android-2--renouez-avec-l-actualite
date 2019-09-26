@@ -14,8 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.m.sofiane.mynews.Activity.SubActivity;
-import com.m.sofiane.mynews.Modele.ModeleBase.News;
+import com.m.sofiane.mynews.activity.SubActivity;
+import com.m.sofiane.mynews.modele.ModeleBase.News;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

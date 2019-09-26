@@ -1,4 +1,4 @@
-package com.m.sofiane.mynews.Modele.ModeleSearch;
+package com.m.sofiane.mynews.modele.ModeleSearch;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

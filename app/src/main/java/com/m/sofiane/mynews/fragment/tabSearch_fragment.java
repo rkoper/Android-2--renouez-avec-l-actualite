@@ -1,4 +1,4 @@
-package com.m.sofiane.mynews.Fragment;
+package com.m.sofiane.mynews.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,18 +10,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.m.sofiane.mynews.DataAdapterResult;
-import com.m.sofiane.mynews.Modele.ModeleSearch.SearchResult;
+import com.m.sofiane.mynews.modele.ModeleSearch.SearchResult;
 import com.m.sofiane.mynews.NYTimesService;
 import com.m.sofiane.mynews.R;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;

@@ -3,7 +3,6 @@ package com.m.sofiane.mynews;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,16 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.m.sofiane.mynews.Activity.SubActivity;
-import com.m.sofiane.mynews.Modele.ModeleSearch.SearchResult;
+import com.m.sofiane.mynews.activity.SubActivity;
+import com.m.sofiane.mynews.modele.ModeleSearch.SearchResult;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 /**
  * created by Sofiane M. 2019-08-26

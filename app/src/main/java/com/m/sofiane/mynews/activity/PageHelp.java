@@ -1,4 +1,4 @@
-package com.m.sofiane.mynews.Activity;
+package com.m.sofiane.mynews.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

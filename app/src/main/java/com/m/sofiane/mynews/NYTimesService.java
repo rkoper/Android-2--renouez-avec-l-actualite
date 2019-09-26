@@ -1,6 +1,6 @@
 package com.m.sofiane.mynews;
 
-import com.m.sofiane.mynews.Modele.ModeleSearch.SearchResult;
+import com.m.sofiane.mynews.modele.ModeleSearch.SearchResult;
 
 import java.util.Map;
 
