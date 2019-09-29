@@ -14,6 +14,8 @@ import android.util.Log;
 import com.m.sofiane.mynews.activity.MainActivity;
 import com.m.sofiane.mynews.modele.ModeleSearch.SearchResult;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,9 +55,15 @@ public class MyAlarm  extends BroadcastReceiver {
     }
 
     private void controleArticle(Context context) {
+
+        Date mDate = new Date();
+        SimpleDateFormat string = new SimpleDateFormat("yyyyMMdd");
+        String mBeginDate = string.format(mDate);
         String mSection = context.getSharedPreferences("My settings", MODE_PRIVATE).getString(SEARCHSECTION, null);
         String mQueryTerm = context.getSharedPreferences("My settings", MODE_PRIVATE).getString(SEARCHWORD, null);
 
+
+        researchValue.put("begin_date", mBeginDate);
         researchValue.put("fq", mSection);
         researchValue.put("q", mQueryTerm);
         loadJSONResult();
@@ -72,13 +80,11 @@ public class MyAlarm  extends BroadcastReceiver {
 
         call2.enqueue(new Callback<SearchResult>() {
 
-
             @Override
-            public void onResponse(Call<SearchResult> call, Response<SearchResult> response) {
+            public void onResponse(Call<SearchResult> call2, Response<SearchResult> response) {
                 SearchResult jsonResponse2 = response.body();
                 mNumArticle = jsonResponse2.getResponse().getDocs().size();
                 createNotif();
-
             }
 
             @Override
@@ -95,8 +101,8 @@ public class MyAlarm  extends BroadcastReceiver {
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
         inboxStyle.setBigContentTitle("My News");
         if (mNumArticle==0) {
-            inboxStyle.addLine("Today "+mNumArticle +" "+ mArticle + "for you");}
-        else {inboxStyle.addLine("Today "+mNumArticle +" "+ mArticles + "for you");}
+            inboxStyle.addLine("Today "+mNumArticle +" "+ mArticle + " for you");}
+        else {inboxStyle.addLine("Today "+mNumArticle +" "+ mArticles + " for you");}
 
         String channelId = "MyID";
 

@@ -85,8 +85,8 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
 
         Calendar cal = Calendar.getInstance();
 
-        cal.set(Calendar.HOUR_OF_DAY, 16);
-        cal.set(Calendar.MINUTE, 47);
+        cal.set(Calendar.HOUR_OF_DAY, 17);
+        cal.set(Calendar.MINUTE, 19);
         cal.set(Calendar.SECOND, 00);
 
 
