@@ -43,15 +43,11 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
     private String POLITICS = "politics";
     private String SPORTS = "sports";
     private String TRAVEL = "travel";
-    private NotificationManager mNotificationManager;
-    private static final int NOTIFICATION_ID = 0;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_notification);
 
-        mSection = getSharedPreferences("my settings", MODE_PRIVATE).getString(SEARCHSECTION, null);
-        mQueryTerm = getSharedPreferences("my settings", MODE_PRIVATE).getString(SEARCHWORD, null);
         mSwitch = (Switch) findViewById(R.id.switchCheck);
         mSwitch.setOnCheckedChangeListener(this);
 
@@ -89,7 +85,7 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
 
         Calendar cal = Calendar.getInstance();
 
-        cal.set(Calendar.HOUR_OF_DAY, 19);
+        cal.set(Calendar.HOUR_OF_DAY, 16);
         cal.set(Calendar.MINUTE, 47);
         cal.set(Calendar.SECOND, 00);
 
@@ -103,6 +99,7 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
                 cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, broadcast);
+        retrieveSettings();
     }
 
     private void retrieveSettings() {
@@ -123,43 +120,44 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
         sports = (CheckBox) findViewById(R.id.checkBox_sports2);
         travels = (CheckBox) findViewById(R.id.checkBox_travel2);
 
-        SharedPreferences.Editor saveChoice = getSharedPreferences("My settings", MODE_PRIVATE).edit();
+        SharedPreferences.Editor SaveBox = getSharedPreferences("My Box", MODE_PRIVATE).edit();
 
         if (arts.isChecked()) {
             mArts = "\"arts\"";
         }
         else {mArts="";}
-        saveChoice.putString(ARTS, mArts);
+        SaveBox.putString(ARTS, mArts);
 
         if (buisness.isChecked()) {
             mBusiness = "\"buisness\"";
         }
         else {mBusiness="";}
-        saveChoice.putString(BUSINESS, mSection);
+        SaveBox.putString(BUSINESS, mSection);
 
         if (entrepreneurs.isChecked()) {
             mEntrepreneurs = "\"entrepreneurs\""; }
         else {mEntrepreneurs="";}
-        saveChoice.putString(ENTREPRENEURS, mEntrepreneurs);
+        SaveBox.putString(ENTREPRENEURS, mEntrepreneurs);
 
         if (politics.isChecked()) {
             mPolitics = "\"politics\""; }
         else {mPolitics="";}
-        saveChoice.putString(POLITICS, mPolitics);
+        SaveBox.putString(POLITICS, mPolitics);
 
         if (sports.isChecked()) {
             mSports = "\"sports\""; }
         else {mSports="";}
-        saveChoice.putString(SPORTS, mSports);
+        SaveBox.putString(SPORTS, mSports);
 
         if (travels.isChecked()) {
             mTravel = "\"travels\""; }
         else {mTravel="";}
-        saveChoice.putString(TRAVEL, mTravel);
+        SaveBox.putString(TRAVEL, mTravel);
 
         mSection = "news_desk(" + mArts+mBusiness+mEntrepreneurs+mPolitics+mSports+mTravel;
         mSection = mSection + ")";
 
+        SharedPreferences.Editor saveChoice = getSharedPreferences("My settings", MODE_PRIVATE).edit();
         saveChoice.putString(SEARCHWORD, mQueryTerm);
         saveChoice.putString(SEArCHSWITCH, String.valueOf(mSwitch));
         saveChoice.putString(SEARCHSECTION, mSection);
