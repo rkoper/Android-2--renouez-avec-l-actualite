@@ -228,6 +228,10 @@
         "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/1e9179abc36fc0e1642a90eefafa2c32/res/layout/abc_tooltip.xml"
     },
     {
+        "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable_ic_star_black_24dp.xml.flat",
+        "source": "/Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/res/drawable/ic_star_black_24dp.xml"
+    },
+    {
         "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/1e9179abc36fc0e1642a90eefafa2c32/res/drawable-ldrtl-mdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
     },
@@ -302,6 +306,10 @@
     {
         "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable_abc_btn_radio_material.xml.flat",
         "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/1e9179abc36fc0e1642a90eefafa2c32/res/drawable/abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable_ic_notifications_black_24dp.xml.flat",
+        "source": "/Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/res/drawable/ic_notifications_black_24dp.xml"
     },
     {
         "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/color_mtrl_tabs_colored_ripple_color.xml.flat",
@@ -596,6 +604,10 @@
         "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/1e9179abc36fc0e1642a90eefafa2c32/res/drawable-v21/abc_btn_colored_material.xml"
     },
     {
+        "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable_ic_account_circle_black_24dp.xml.flat",
+        "source": "/Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/res/drawable/ic_account_circle_black_24dp.xml"
+    },
+    {
         "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/1e9179abc36fc0e1642a90eefafa2c32/res/drawable-hdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
     },
@@ -726,6 +738,10 @@
     {
         "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/layout_design_bottom_navigation_item.xml.flat",
         "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/0c56117c765798ff244083ea4f578d6e/res/layout/design_bottom_navigation_item.xml"
+    },
+    {
+        "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable_ic_directions_bike_black_24dp.xml.flat",
+        "source": "/Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/res/drawable/ic_directions_bike_black_24dp.xml"
     },
     {
         "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_holo_light.xml.flat",
@@ -1218,6 +1234,10 @@
     {
         "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable_search.png.flat",
         "source": "/Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/res/drawable/search.png"
+    },
+    {
+        "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable_ic_local_library_black_24dp.xml.flat",
+        "source": "/Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/res/drawable/ic_local_library_black_24dp.xml"
     },
     {
         "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",

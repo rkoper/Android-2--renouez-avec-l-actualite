@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,11 +109,11 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView CR_date,CR_title, CR_category;
         private ImageView CR_multimedia;
-        private LinearLayout item_contact;
+        private ConstraintLayout item_contact;
 
         public ViewHolder (View itemview) {
             super (itemview);
-            item_contact = (LinearLayout) itemview.findViewById(R.id.contact_item_id) ;
+            item_contact = (ConstraintLayout) itemview.findViewById(R.id.contact_item_id) ;
             CR_date= (TextView) itemview.findViewById(R.id.CR_date);
             CR_title = (TextView) itemview.findViewById(R.id.CR_title);
             CR_category= (TextView) itemview.findViewById(R.id.CR_category);

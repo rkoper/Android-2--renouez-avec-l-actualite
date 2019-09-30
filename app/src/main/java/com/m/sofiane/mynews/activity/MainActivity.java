@@ -22,7 +22,13 @@ import com.m.sofiane.mynews.SectionPagerAdapter;
 
 public class MainActivity extends AppCompatActivity
        implements NavigationView.OnNavigationItemSelectedListener {
-    DrawerLayout mdrawerlayout ;
+    DrawerLayout mDrawerLayout;
+    ViewPager viewPager;
+    final int INDEX_TOP_STORIES = 0;
+    final int INDEX_MOST = 1;
+    final int INDEX_SPORTS = 2;
+    Toolbar toolbar;
+
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -30,7 +36,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
+        toolbar = findViewById(R.id.activity_main_toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -40,12 +46,13 @@ public class MainActivity extends AppCompatActivity
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
 
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-        final ViewPager viewPager = findViewById(R.id.pager);
+        viewPager = findViewById(R.id.pager);
         PagerAdapter SectionPagerAdapter = new SectionPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(SectionPagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -65,12 +72,10 @@ public class MainActivity extends AppCompatActivity
     private void configureToolBar() {
         Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
         setSupportActionBar(toolbar);
-
-        DrawerLayout mdrawerlayout = (findViewById(R.id.drawer_layout));
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, mdrawerlayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
-        mdrawerlayout.addDrawerListener(toggle);
+        mDrawerLayout.addDrawerListener(toggle);
 
         toggle.syncState();
     }
@@ -79,7 +84,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                mdrawerlayout.openDrawer(GravityCompat.START);
+                mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
             case R.id.menu_activity_search:
                 Intent Page_Search = new Intent(MainActivity.this, PageSearch.class);
@@ -90,7 +95,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(Page_About);
                 break;
             case R.id.notification:
-                Intent Page_Notif = new Intent(MainActivity.this,PageNotification.class);
+                Intent Page_Notif = new Intent(MainActivity.this, PageNotification.class);
                 startActivity(Page_Notif);
                 break;
             case R.id.help:
@@ -109,29 +114,38 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-            Intent Page_Search = new Intent(MainActivity.this, PageSearch.class);
-            startActivity(Page_Search);
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        switch (item.getItemId()) {
+            case R.id.nav_Top:
+                viewPager.setCurrentItem(INDEX_TOP_STORIES);
+                mDrawerLayout.closeDrawers();
+                return true;
+            case R.id.nav_Popu:
+                viewPager.setCurrentItem(INDEX_MOST);
+                mDrawerLayout.closeDrawers();
+                break;
+            case R.id.nav_Sports:
+                viewPager.setCurrentItem(INDEX_SPORTS);
+                mDrawerLayout.closeDrawers();
+                break;
+            case R.id.nav_Search:
+                Intent Page_Search = new Intent(MainActivity.this, PageSearch.class);
+                startActivity(Page_Search);
+                break;
+            case R.id.nav_Notif:
+                Intent Page_Notif = new Intent(MainActivity.this, PageNotification.class);
+                startActivity(Page_Notif);
+                break;
+            case R.id.nav_About:
+                Intent PageAbout = new Intent(MainActivity.this, PageAbout.class);
+                startActivity(PageAbout);
+                break;
+            case R.id.nav_Help:
+                Intent Page_Help = new Intent(MainActivity.this, PageHelp.class);
+                startActivity(Page_Help);
         }
-
         return true;
-
     }
-
 }
 
 
