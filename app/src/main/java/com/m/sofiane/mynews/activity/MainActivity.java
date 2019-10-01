@@ -131,18 +131,22 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_Search:
                 Intent Page_Search = new Intent(MainActivity.this, PageSearch.class);
                 startActivity(Page_Search);
+                mDrawerLayout.closeDrawers();
                 break;
             case R.id.nav_Notif:
                 Intent Page_Notif = new Intent(MainActivity.this, PageNotification.class);
                 startActivity(Page_Notif);
+                mDrawerLayout.closeDrawers();
                 break;
             case R.id.nav_About:
                 Intent PageAbout = new Intent(MainActivity.this, PageAbout.class);
                 startActivity(PageAbout);
+                mDrawerLayout.closeDrawers();
                 break;
             case R.id.nav_Help:
                 Intent Page_Help = new Intent(MainActivity.this, PageHelp.class);
                 startActivity(Page_Help);
+                mDrawerLayout.closeDrawers();
         }
         return true;
     }

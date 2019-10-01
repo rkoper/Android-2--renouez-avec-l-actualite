@@ -1289,8 +1289,9 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
-id textView
 id textView2
+id textViewAbout
+id textViewHelp
 id textView_begin_date
 id textView_end_date
 id text_input_password_toggle

@@ -36,9 +36,9 @@ public class PageAbout extends AppCompatActivity {
     }
 
     private void configureToolBar(){
-
         Toolbar toolbar = findViewById(R.id.simple_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("About");
     }

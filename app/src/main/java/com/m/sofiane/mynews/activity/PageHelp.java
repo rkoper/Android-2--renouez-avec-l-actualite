@@ -14,16 +14,6 @@ public class PageHelp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_help);
-
-        Toolbar toolbar = findViewById(R.id.simple_toolbar);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Help");
-
-
-
         this.configureToolBar();
 
     }
@@ -46,8 +36,11 @@ public class PageHelp extends AppCompatActivity {
     }
 
     private void configureToolBar(){
-        Toolbar toolbar= findViewById(R.id.simple_toolbar);
+        Toolbar toolbar = findViewById(R.id.simple_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Help");
     }
 
 }

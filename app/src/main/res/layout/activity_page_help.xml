@@ -7,16 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.PageHelp">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="351dp"
-        android:layout_height="411dp"
-        android:layout_weight="1"
-        android:text="XXXX XXXXXX"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="88dp"
-        tools:ignore="MissingConstraints" />
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/simple_toolbar"
         android:layout_height="?attr/actionBarSize"
@@ -26,12 +16,18 @@
         android:background="@android:color/holo_blue_dark"
         android:minHeight="?attr/actionBarSize"
         app:titleTextColor="@android:color/white"
-        android:layout_width="match_parent" />
-    <TextView
         android:layout_width="match_parent"
-        android:layout_height="163dp"
-        android:text="XXXxxxxx   x xxxxxxx   xxxxxxx    xx  xxxxx"
-        android:textSize="20dp"
-        />
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/textViewHelp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="If you need some help please contact Us : sofianem75018@gmail.com"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="254dp"
+        tools:ignore="MissingConstraints" />
+
 
 </android.support.constraint.ConstraintLayout>

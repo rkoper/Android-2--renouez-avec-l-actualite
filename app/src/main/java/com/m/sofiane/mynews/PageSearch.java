@@ -1,6 +1,7 @@
 package com.m.sofiane.mynews;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,13 +11,17 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
 import butterknife.BindView;
+
+import static android.view.View.GONE;
 
 public class PageSearch extends AppCompatActivity {
 
@@ -58,9 +63,16 @@ public class PageSearch extends AppCompatActivity {
         mButtonBeginDate = (TextView) findViewById(R.id.button_picker_begin_date);
         mSearchButton = (Button) findViewById(R.id.button_search);
 
+
+
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (CheckCheckBox()== false) {
+                    Toast.makeText(getBaseContext(), "Please Choose category", Toast.LENGTH_LONG).show();
+                }
+        else
+                { mSearchButton.setVisibility(View.VISIBLE);
                 Intent myIntent = new Intent(PageSearch.this,
                         PageSearchResult.class);
                 retrieveSettings();
@@ -68,9 +80,8 @@ public class PageSearch extends AppCompatActivity {
                 myIntent.putExtra("q", mQueryTerm);
                 myIntent.putExtra("begin_date", mBeginDate);
                 myIntent.putExtra("end_date", mEndDate);
-                startActivity(myIntent);
-            }
-        });
+                startActivity(myIntent);}
+
 
         mButtonBeginDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,8 +122,10 @@ public class PageSearch extends AppCompatActivity {
                     mDay = ""+d;}
 
                 Log.d(TAG, "onDateSet : date" + mMonth + mDay + y);
+                String B = mDay + "/" + mMonth + "/" + y;
+                mButtonBeginDate.setText(B);
+
                 String dateB = y + "" + mMonth + "" + mDay;
-                mButtonBeginDate.setText(dateB);
                 mBeginDate = dateB;
             }
         };
@@ -120,26 +133,27 @@ public class PageSearch extends AppCompatActivity {
         mDateSetListenerEnd = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int y, int m, int d) {
-                m = m+1;
-                if (m <= 9){
-                    mMonth = ""+0+m;
-                }else{
-                    mMonth = ""+m;}
+                m = m + 1;
+                if (m <= 9) {
+                    mMonth = "" + 0 + m;
+                } else {
+                    mMonth = "" + m;
+                }
 
-                if (d <= 9){
-                    mDay = ""+0+d;
-                }else{
-                    mDay = ""+d;}
+                if (d <= 9) {
+                    mDay = "" + 0 + d;
+                } else {
+                    mDay = "" + d;
+                }
                 Log.d(TAG, "onDateSet : date" + mMonth + "" + mDay + "" + y);
+                String E = mDay + "/" + mMonth + "/" + y;
+                mButtonEndDate.setText(E);
+
                 String dateE = y + "" + mMonth + "" + mDay;
-                mButtonEndDate.setText(dateE);
                 mEndDate = dateE;
             }
         };
-
-    }
-
-
+            }});}
 
     public boolean onCreateOptionsMenu(Menu menu) {
                 getMenuInflater().inflate(R.menu.activity_page_toolbar, menu);
@@ -160,7 +174,7 @@ public class PageSearch extends AppCompatActivity {
         return true;
     }
 
-    protected void retrieveSettings(){
+    protected void retrieveSettings() {
 
         mEditTextSearchTerm = (EditText) findViewById(R.id.editText_search_term);
         mQueryTerm = mEditTextSearchTerm.getText().toString();
@@ -173,21 +187,51 @@ public class PageSearch extends AppCompatActivity {
         travels = (CheckBox) findViewById(R.id.checkBox_travel);
 
 
-        mSection ="news_desk(";
-        if (arts.isChecked())
-        { mSection += "\"Arts\""; }
-        if (buisness.isChecked())
-        {mSection+= "\"buisness\""; }
-        if(entrepreneurs.isChecked())
-        {mSection += "\"entrepreneurs\""; }
-        if(politics.isChecked())
-        {mSection += "\"politics\"";
-        }if(sports.isChecked()){
+        mSection = "news_desk(";
+        if (arts.isChecked()) {
+            mSection += "\"Arts\"";
+        }
+        if (buisness.isChecked()) {
+            mSection += "\"buisness\"";
+        }
+        if (entrepreneurs.isChecked()) {
+            mSection += "\"entrepreneurs\"";
+        }
+        if (politics.isChecked()) {
+            mSection += "\"politics\"";
+        }
+        if (sports.isChecked()) {
             mSection += "\"sports\"";
-        }if(travels.isChecked())
-        {mSection += "\"travels\""; }
-        mSection = mSection+")";
+        }
+        if (travels.isChecked()) {
+            mSection += "\"travels\"";
+        }
+
+
+        if (mSection == "news_desk()") {
+            mSection = null;
+        } else {
+            mSection = mSection + ")";
+        }
 
     }
-        }
+
+        public boolean CheckCheckBox (){
+            arts = (CheckBox) findViewById(R.id.checkBox_arts);
+            buisness = (CheckBox) findViewById(R.id.checkBox_business);
+            entrepreneurs = (CheckBox) findViewById(R.id.checkBox_entrepreneurs);
+            politics = (CheckBox) findViewById(R.id.checkBox_politics);
+            sports = (CheckBox) findViewById(R.id.checkBox_sports);
+            travels = (CheckBox) findViewById(R.id.checkBox_travel);
+
+        if (!arts.isChecked()&&!buisness.isChecked()&&!entrepreneurs.isChecked()&&!politics.isChecked()&&!sports.isChecked()&&!travels.isChecked()){
+
+            return false; }
+
+       else { return true; }
+    }
+}
+
+
+
 

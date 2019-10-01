@@ -21,6 +21,8 @@ import com.m.sofiane.mynews.MyAlarm;
 import com.m.sofiane.mynews.R;
 import java.util.Calendar;
 
+import static android.view.View.GONE;
+
 public class PageNotification extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     protected String mQueryTerm;
@@ -56,16 +58,22 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
 
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;}
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_page_toolbar, menu);
         return true;
     }
 
     private void configureToolBar() {
-
         Toolbar toolbar = findViewById(R.id.simple_toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Notification");
     }
 
     @Override
@@ -76,7 +84,6 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
             setAlarm();
         }
         else {
-            mText.setText("Test : OFF");
             mSwitch.setChecked(false);
         }
     }
@@ -88,7 +95,6 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
         cal.set(Calendar.HOUR_OF_DAY, 17);
         cal.set(Calendar.MINUTE, 19);
         cal.set(Calendar.SECOND, 00);
-
 
 
         Intent notificationIntent = new Intent(getApplicationContext(), MyAlarm.class);
@@ -162,5 +168,5 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
         saveChoice.putString(SEArCHSWITCH, String.valueOf(mSwitch));
         saveChoice.putString(SEARCHSECTION, mSection);
         saveChoice.apply();
-    }
-}
+
+}}

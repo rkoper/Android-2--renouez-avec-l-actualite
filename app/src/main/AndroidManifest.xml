@@ -22,6 +22,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
         <activity android:name=".activity.PageHelp" />
@@ -29,8 +30,10 @@
         <activity android:name=".activity.PageAbout" android:parentActivityName=".activity.MainActivity"/>
         <activity android:name=".activity.SubActivity" />
         <activity android:name=".PageSearchResult" />
-        <activity android:name=".activity.PageNotification" android:parentActivityName=".activity.MainActivity"
+        <activity android:name=".activity.PageNotification"
+            android:parentActivityName=".activity.MainActivity"
             android:label="Notification"/>
+
         <receiver android:name=".MyAlarm" />
     </application>
 
