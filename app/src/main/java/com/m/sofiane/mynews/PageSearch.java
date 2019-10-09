@@ -54,12 +54,16 @@ public class PageSearch extends AppCompatActivity {
         setContentView(R.layout.activity_page_search);
         this.setPageTitle();
 
+        datepicker();
+        dateListenner();
+        searchOption();
 
-        mButtonEndDate = findViewById(R.id.button_picker_end_date);
-        mButtonBeginDate = findViewById(R.id.button_picker_begin_date);
+
+
+       }
+
+    private void searchOption() {
         mSearchButton = findViewById(R.id.button_search);
-
-
 
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,43 +71,20 @@ public class PageSearch extends AppCompatActivity {
                 if (!CheckCheckBox()) {
                     Toast.makeText(getBaseContext(), "Please Choose category", Toast.LENGTH_LONG).show();
                 }
-        else
+                else
                 { mSearchButton.setVisibility(View.VISIBLE);
-                Intent myIntent = new Intent(PageSearch.this,
-                        PageSearchResult.class);
-                retrieveSettings();
-                myIntent.putExtra("fq", mSection);
-                myIntent.putExtra("q", mQueryTerm);
-                myIntent.putExtra("begin_date", mBeginDate);
-                myIntent.putExtra("end_date", mEndDate);
-                startActivity(myIntent);}
+                    Intent myIntent = new Intent(PageSearch.this,
+                            PageSearchResult.class);
+                    retrieveSettings();
+                    myIntent.putExtra("fq", mSection);
+                    myIntent.putExtra("q", mQueryTerm);
+                    myIntent.putExtra("begin_date", mBeginDate);
+                    myIntent.putExtra("end_date", mEndDate);
+                    startActivity(myIntent);}
+            }});
+    }
 
-
-        mButtonBeginDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                final int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog dialog = new DatePickerDialog(PageSearch.this, mDateSetListenerBegin, year, month, day);
-                dialog.getWindow();
-                dialog.show();
-            }
-        });
-        mButtonEndDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                final int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog dialog = new DatePickerDialog(PageSearch.this, mDateSetListenerEnd, year, month, day);
-                dialog.getActionBar();
-                dialog.show();
-            }
-        });
-
+    private void dateListenner() {
         mDateSetListenerBegin = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int y, int m, int d) {
@@ -147,7 +128,38 @@ public class PageSearch extends AppCompatActivity {
                 mEndDate = y + "" + mMonth + "" + mDay;
             }
         };
-            }});}
+    }
+
+    private void datepicker() {
+        mButtonEndDate = findViewById(R.id.button_picker_end_date);
+        mButtonBeginDate = findViewById(R.id.button_picker_begin_date);
+
+        mButtonBeginDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                final int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dialog = new DatePickerDialog(PageSearch.this, mDateSetListenerBegin, year, month, day);
+                dialog.getWindow();
+                dialog.show();
+            }
+        });
+        mButtonEndDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                final int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dialog = new DatePickerDialog(PageSearch.this, mDateSetListenerEnd, year, month, day);
+                dialog.getActionBar();
+                dialog.show();
+            }
+        });
+
+    }
 
     public boolean onCreateOptionsMenu(Menu menu) {
                 getMenuInflater().inflate(R.menu.activity_page_toolbar, menu);

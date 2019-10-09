@@ -16,7 +16,6 @@ public interface NYTimesService {
     @GET("topstories/v2/home.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
     Call<JSONResponse> getJSON();
 
-  //  @GET("topstories/v2/home.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
    @GET("mostpopular/v2/viewed/7.json?api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
     Call<JSONResponse> getJSON2();
 
@@ -25,5 +24,6 @@ public interface NYTimesService {
 
     @GET("search/v2/articlesearch.json?&api-key=327RyaQp2UwU2bq5qUZQIsVVsBqCmJhm")
     Call<SearchResult> getJSON4(@QueryMap Map<String, String> researchValue);
+
 
 }

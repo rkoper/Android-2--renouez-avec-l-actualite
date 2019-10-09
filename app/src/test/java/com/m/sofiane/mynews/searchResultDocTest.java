@@ -35,11 +35,11 @@ public class searchResultDocTest {
 
     @Test
     public void getAbstract(){
-        String title = "Article one";
+        String title = "First article";
 
         mDoc.setAbstract(title);
 
-        assertEquals("Article one", mDoc.getAbstract());
+        assertEquals("First article", mDoc.getAbstract());
     }
 
     @Test
@@ -53,28 +53,28 @@ public class searchResultDocTest {
 
     @Test
     public void setPubDate(){
-        String date = "31/07/2019";
+        String date = "07/11/2019";
 
         mDoc.setPubDate(date);
 
-        assertEquals("31/07/2019", mDoc.getPubDate());
+        assertEquals("07/11/2019", mDoc.getPubDate());
     }
 
     @Test
     public void getSectionName(){
-        String section = "Science";
+        String section = "Arts";
 
         mDoc.setSectionName(section);
 
-        assertEquals("Science", mDoc.getSectionName());
+        assertEquals("Arts", mDoc.getSectionName());
     }
 
     @Test
     public void getId(){
-        String id = "21";
+        String id = "12";
 
         mDoc.setId(id);
 
-        assertEquals("21", mDoc.getId());
+        assertEquals("12", mDoc.getId());
     }
 }

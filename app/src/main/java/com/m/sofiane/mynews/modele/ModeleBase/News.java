@@ -41,7 +41,7 @@ public class News {
         return status;
     }
 
-    public class Articles {
+    public static class Articles {
 
         @SerializedName("section")
         @Expose

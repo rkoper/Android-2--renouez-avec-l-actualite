@@ -3,7 +3,9 @@ package com.m.sofiane.mynews;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -41,37 +43,19 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
         return new ViewHolder(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("ResourceType")
     @Override
     public void onBindViewHolder(@NonNull DataAdapterResult.ViewHolder holder, final int position) {
+        dateCalling(holder,position);
+
+        titleCalling(holder, position);
+
+        imageCalling (holder, position);
+    }
+
+    private void imageCalling(ViewHolder holder, final int position) {
         SearchResult.Doc current = results1.getResponse().getDocs().get(position);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-        SimpleDateFormat str = new SimpleDateFormat("dd/mm/yyyy");
-        Date today = null;
-        try {
-            today = sdf.parse(current.getPubDate());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        String pubDate = str.format(today);
-
-        holder.CR_date.setText(pubDate);
-
-        String section = current.getSectionName();
-
-        String sub1;
-        if (current.getSubsection() == null) {
-            sub1 ="";
-          } else {
-            sub1 = " > " +current.getSubsection();
-            }
-
-        String sectionSub = section + sub1;
-        holder.CR_category.setText(sectionSub);
-        holder.CR_title.setText(current.getSnippet());
-
-
-
         if (current.getMultimedia().isEmpty()){
             Glide.with(contextSearch).load(R.drawable.logonyta).into(holder.CR_multimedia);
         }
@@ -91,6 +75,28 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
             }
 
         });
+    }
+
+    private void titleCalling(ViewHolder holder, int position) {
+        SearchResult.Doc current = results1.getResponse().getDocs().get(position);
+        String section = current.getSectionName();
+
+        String sub1;
+        if (current.getSubsection() == null) {
+            sub1 ="";
+        } else {
+            sub1 = " > " +current.getSubsection();
+        }
+
+        String sectionSub = section + sub1;
+        holder.CR_category.setText(sectionSub);
+        holder.CR_title.setText(current.getSnippet());
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void dateCalling(ViewHolder holder, int position) {
+        SearchResult.Doc current = results1.getResponse().getDocs().get(position);
+        holder.CR_date.setText(DateUtils.parseSearchedDate(current.getPubDate()));
     }
 
     public int getItemCount() {

@@ -2,7 +2,9 @@ package com.m.sofiane.mynews;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -43,6 +45,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull DataAdapter.ViewHolder holder, final int position) {
 
@@ -90,18 +93,10 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         holder.CR_title.setText(current.getTitle());
     }
 
-    private void dateCalling(@NonNull DataAdapter.ViewHolder holder, final int position) {
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void dateCalling(@NonNull DataAdapter.ViewHolder holder, final int position) {
         News.Articles current = results.get(position);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-        SimpleDateFormat str = new SimpleDateFormat("dd/mm/yyyy");
-        Date today = null;
-        try {
-            today = sdf.parse(current.getPublishedDate());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        String pubDate = str.format(today);
-        holder.CR_date.setText(pubDate);
+        holder.CR_date.setText(DateUtils.parseNormaldDate(current.getPublishedDate()));
     }
 
 

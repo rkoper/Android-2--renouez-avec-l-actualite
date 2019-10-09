@@ -20,7 +20,9 @@ import com.m.sofiane.mynews.R;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Observable;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,7 +56,7 @@ public class tab1_fragment  extends Fragment   {
 
     }
 
-    private void loadJSON(){
+    public void loadJSON(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.nytimes.com/svc/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -69,6 +71,8 @@ public class tab1_fragment  extends Fragment   {
                 rvdata= Arrays.asList(jsonResponse.getResults());
                 rvAdapter = new DataAdapter(rvdata,getContext());
                 rvFragment.setAdapter(rvAdapter);
+
+
             }
 
             @Override
@@ -77,4 +81,5 @@ public class tab1_fragment  extends Fragment   {
             }
         });
     }
+
 }

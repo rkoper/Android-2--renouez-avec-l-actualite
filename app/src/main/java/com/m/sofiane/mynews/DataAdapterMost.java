@@ -2,7 +2,9 @@ package com.m.sofiane.mynews;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -43,35 +45,23 @@ public class DataAdapterMost extends RecyclerView.Adapter<DataAdapterMost.ViewHo
         return new ViewHolder(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull DataAdapterMost.ViewHolder holder, final int position) {
+
+        dateCalling(holder,position);
+
+        titleCalling(holder, position);
+
+        imageCalling (holder, position);
+
+
+    }
+
+    private void imageCalling(ViewHolder holder, final int position) {
         News.Articles current = results.get(position);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-        SimpleDateFormat str = new SimpleDateFormat("dd/mm/yyyy");
-        Date today = null;
-        try {
-            today = sdf.parse(current.getPublishedDate());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        String pubDate = str.format(today);
-        holder.CR_date.setText(pubDate);
-
-        String section = current.getSection();
-        String sub = current.getSubsection();
-
-        if (TextUtils.isEmpty(sub)) {
-            sub = "   ";
-        } else {
-            sub = " > " + sub;
-        }
-
-        String sectionSub = section + sub;
-        holder.CR_category.setText(sectionSub);
-        holder.CR_title.setText(current.getTitle());
-
-      if (!current.getMedia().isEmpty())
-         Glide.with(context).load(current.getMedia().get(0).getMediaMetadata().get(0).getUrl()).into(holder.CR_multimedia);
+        if (!current.getMedia().isEmpty())
+            Glide.with(context).load(current.getMedia().get(0).getMediaMetadata().get(0).getUrl()).into(holder.CR_multimedia);
         else {
             Glide.with(context).load(R.drawable.logonyta).into(holder.CR_multimedia);
         }
@@ -87,6 +77,29 @@ public class DataAdapterMost extends RecyclerView.Adapter<DataAdapterMost.ViewHo
             }
 
         });
+    }
+
+    private void titleCalling(ViewHolder holder, int position) {
+        News.Articles current = results.get(position);
+
+        String section = current.getSection();
+        String sub = current.getSubsection();
+
+        if (TextUtils.isEmpty(sub)) {
+            sub = "   ";
+        } else {
+            sub = " > " + sub;
+        }
+
+        String sectionSub = section + sub;
+        holder.CR_category.setText(sectionSub);
+        holder.CR_title.setText(current.getTitle());
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void dateCalling(ViewHolder holder, int position) {
+        News.Articles current = results.get(position);
+        holder.CR_date.setText(DateUtils.parseMostPopularDate(current.getPublishedDate()));
     }
 
     @Override
