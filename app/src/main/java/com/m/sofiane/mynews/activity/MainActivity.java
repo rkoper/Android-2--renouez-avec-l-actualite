@@ -22,12 +22,8 @@ import com.m.sofiane.mynews.SectionPagerAdapter;
 
 public class MainActivity extends AppCompatActivity
        implements NavigationView.OnNavigationItemSelectedListener {
-    DrawerLayout mDrawerLayout;
-    ViewPager viewPager;
-    final int INDEX_TOP_STORIES = 0;
-    final int INDEX_MOST = 1;
-    final int INDEX_SPORTS = 2;
-    Toolbar toolbar;
+    private DrawerLayout mDrawerLayout;
+    private ViewPager viewPager;
 
 
     @SuppressLint("RestrictedApi")
@@ -36,7 +32,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -49,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         viewPager = findViewById(R.id.pager);
@@ -111,10 +107,12 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
+        int INDEX_SPORTS = 2;
+        int INDEX_MOST = 1;
+        int INDEX_TOP_STORIES = 0;
         switch (item.getItemId()) {
             case R.id.nav_Top:
                 viewPager.setCurrentItem(INDEX_TOP_STORIES);

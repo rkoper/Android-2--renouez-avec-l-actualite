@@ -31,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class tab3_fragment  extends Fragment {
     private RecyclerView rvFragment;
     private List<News.Articles> rvData;
-    public DataAdapter rvAdapter ;
+    private DataAdapter rvAdapter ;
 
     @Nullable
     @Override

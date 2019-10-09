@@ -32,17 +32,10 @@ import static android.content.Context.MODE_PRIVATE;
  */
 public class MyAlarm  extends BroadcastReceiver {
 
-    Map<String,String> researchValue = new HashMap<>();
+    private final Map<String,String> researchValue = new HashMap<>();
 
     private int mNumArticle = 0;
-    private String mArticle = "article";
-    private String mArticles = "articles";
     private Context mContext;
-    private String SEARCHSECTION = "section";
-    private String mSection;
-    protected String mQueryTerm;
-    private String SEARCHWORD = "term";
-    private SearchResult rvdata;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -59,7 +52,9 @@ public class MyAlarm  extends BroadcastReceiver {
         Date mDate = new Date();
         SimpleDateFormat string = new SimpleDateFormat("yyyyMMdd");
         String mBeginDate = string.format(mDate);
+        String SEARCHSECTION = "section";
         String mSection = context.getSharedPreferences("My settings", MODE_PRIVATE).getString(SEARCHSECTION, null);
+        String SEARCHWORD = "term";
         String mQueryTerm = context.getSharedPreferences("My settings", MODE_PRIVATE).getString(SEARCHWORD, null);
 
 
@@ -101,8 +96,11 @@ public class MyAlarm  extends BroadcastReceiver {
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
         inboxStyle.setBigContentTitle("My News");
         if (mNumArticle==0) {
-            inboxStyle.addLine("Today "+mNumArticle +" "+ mArticle + " for you");}
-        else {inboxStyle.addLine("Today "+mNumArticle +" "+ mArticles + " for you");}
+            String article = "article";
+            inboxStyle.addLine("Today "+mNumArticle +" "+ article + " for you");}
+        else {
+            String articles = "articles";
+            inboxStyle.addLine("Today "+mNumArticle +" "+ articles + " for you");}
 
         String channelId = "MyID";
 

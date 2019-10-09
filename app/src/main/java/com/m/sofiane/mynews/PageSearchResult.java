@@ -27,7 +27,7 @@ public class PageSearchResult extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        Fragment mFragment = null;
+        Fragment mFragment;
         mFragment = new tabSearch_fragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()

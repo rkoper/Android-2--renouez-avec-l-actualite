@@ -1,7 +1,6 @@
 package com.m.sofiane.mynews;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +10,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,11 +19,9 @@ import java.util.Calendar;
 
 import butterknife.BindView;
 
-import static android.view.View.GONE;
-
 public class PageSearch extends AppCompatActivity {
 
-    public static final String TAG = "PageSearch";
+    private static final String TAG = "PageSearch";
 
     @BindView(R.id.textView_begin_date) TextView beginDate;
     @BindView(R.id.button_picker_begin_date) TextView mButtonBeginDate;
@@ -41,10 +37,10 @@ public class PageSearch extends AppCompatActivity {
 
 
 
-    protected String mQueryTerm;
-    protected String mSection ;
-    protected String mBeginDate;
-    protected String mEndDate;
+    private String mQueryTerm;
+    private String mSection ;
+    private String mBeginDate;
+    private String mEndDate;
     private DatePickerDialog.OnDateSetListener mDateSetListenerBegin;
     private DatePickerDialog.OnDateSetListener mDateSetListenerEnd;
     private String mDay;
@@ -59,16 +55,16 @@ public class PageSearch extends AppCompatActivity {
         this.setPageTitle();
 
 
-        mButtonEndDate = (TextView) findViewById(R.id.button_picker_end_date);
-        mButtonBeginDate = (TextView) findViewById(R.id.button_picker_begin_date);
-        mSearchButton = (Button) findViewById(R.id.button_search);
+        mButtonEndDate = findViewById(R.id.button_picker_end_date);
+        mButtonBeginDate = findViewById(R.id.button_picker_begin_date);
+        mSearchButton = findViewById(R.id.button_search);
 
 
 
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (CheckCheckBox()== false) {
+                if (!CheckCheckBox()) {
                     Toast.makeText(getBaseContext(), "Please Choose category", Toast.LENGTH_LONG).show();
                 }
         else
@@ -125,8 +121,7 @@ public class PageSearch extends AppCompatActivity {
                 String B = mDay + "/" + mMonth + "/" + y;
                 mButtonBeginDate.setText(B);
 
-                String dateB = y + "" + mMonth + "" + mDay;
-                mBeginDate = dateB;
+                mBeginDate = y + "" + mMonth + "" + mDay;
             }
         };
 
@@ -149,8 +144,7 @@ public class PageSearch extends AppCompatActivity {
                 String E = mDay + "/" + mMonth + "/" + y;
                 mButtonEndDate.setText(E);
 
-                String dateE = y + "" + mMonth + "" + mDay;
-                mEndDate = dateE;
+                mEndDate = y + "" + mMonth + "" + mDay;
             }
         };
             }});}
@@ -174,17 +168,17 @@ public class PageSearch extends AppCompatActivity {
         return true;
     }
 
-    protected void retrieveSettings() {
+    private void retrieveSettings() {
 
-        mEditTextSearchTerm = (EditText) findViewById(R.id.editText_search_term);
+        mEditTextSearchTerm = findViewById(R.id.editText_search_term);
         mQueryTerm = mEditTextSearchTerm.getText().toString();
 
-        arts = (CheckBox) findViewById(R.id.checkBox_arts);
-        buisness = (CheckBox) findViewById(R.id.checkBox_business);
-        entrepreneurs = (CheckBox) findViewById(R.id.checkBox_entrepreneurs);
-        politics = (CheckBox) findViewById(R.id.checkBox_politics);
-        sports = (CheckBox) findViewById(R.id.checkBox_sports);
-        travels = (CheckBox) findViewById(R.id.checkBox_travel);
+        arts = findViewById(R.id.checkBox_arts);
+        buisness = findViewById(R.id.checkBox_business);
+        entrepreneurs = findViewById(R.id.checkBox_entrepreneurs);
+        politics = findViewById(R.id.checkBox_politics);
+        sports = findViewById(R.id.checkBox_sports);
+        travels = findViewById(R.id.checkBox_travel);
 
 
         mSection = "news_desk(";
@@ -216,19 +210,15 @@ public class PageSearch extends AppCompatActivity {
 
     }
 
-        public boolean CheckCheckBox (){
-            arts = (CheckBox) findViewById(R.id.checkBox_arts);
-            buisness = (CheckBox) findViewById(R.id.checkBox_business);
-            entrepreneurs = (CheckBox) findViewById(R.id.checkBox_entrepreneurs);
-            politics = (CheckBox) findViewById(R.id.checkBox_politics);
-            sports = (CheckBox) findViewById(R.id.checkBox_sports);
-            travels = (CheckBox) findViewById(R.id.checkBox_travel);
+        private boolean CheckCheckBox(){
+            arts = findViewById(R.id.checkBox_arts);
+            buisness = findViewById(R.id.checkBox_business);
+            entrepreneurs = findViewById(R.id.checkBox_entrepreneurs);
+            politics = findViewById(R.id.checkBox_politics);
+            sports = findViewById(R.id.checkBox_sports);
+            travels = findViewById(R.id.checkBox_travel);
 
-        if (!arts.isChecked()&&!buisness.isChecked()&&!entrepreneurs.isChecked()&&!politics.isChecked()&&!sports.isChecked()&&!travels.isChecked()){
-
-            return false; }
-
-       else { return true; }
+            return arts.isChecked() || buisness.isChecked() || entrepreneurs.isChecked() || politics.isChecked() || sports.isChecked() || travels.isChecked();
     }
 }
 

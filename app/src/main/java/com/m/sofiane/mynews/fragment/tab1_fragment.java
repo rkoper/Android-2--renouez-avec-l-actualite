@@ -1,9 +1,5 @@
 package com.m.sofiane.mynews.fragment;
 
-/**
- * created by Sofiane M. 20/06/2019
- */
-
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -35,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class tab1_fragment  extends Fragment   {
     private RecyclerView rvFragment;
     private List<News.Articles> rvdata;
-    public DataAdapter rvAdapter ;
+    private DataAdapter rvAdapter ;
 
     @Nullable
     @Override

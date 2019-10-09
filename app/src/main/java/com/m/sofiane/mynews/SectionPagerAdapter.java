@@ -1,11 +1,9 @@
 package com.m.sofiane.mynews;
 
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.m.sofiane.mynews.activity.MainActivity;
 import com.m.sofiane.mynews.fragment.tab1_fragment;
 import com.m.sofiane.mynews.fragment.tab2_fragment;
 import com.m.sofiane.mynews.fragment.tab3_fragment;
@@ -19,9 +17,9 @@ public class SectionPagerAdapter extends FragmentPagerAdapter {
         super(mFm);
     }
 
-    tab1_fragment tabOne = new tab1_fragment();
-    tab2_fragment tabTwo = new tab2_fragment();
-    tab3_fragment tabThree = new tab3_fragment();
+    private final tab1_fragment tabOne = new tab1_fragment();
+    private final tab2_fragment tabTwo = new tab2_fragment();
+    private final tab3_fragment tabThree = new tab3_fragment();
 
     @Override
     public String getPageTitle (int position) {

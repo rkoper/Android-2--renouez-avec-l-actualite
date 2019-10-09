@@ -31,12 +31,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class tabSearch_fragment extends Fragment   {
     private RecyclerView rvFragment;
     private SearchResult rvdata;
-    public DataAdapterResult rvAdapter ;
-    protected String mQueryTerm;
-    protected String mSection = "Category : ";
-    protected String mBeginDate;
-    protected String mEndDate;
-    private Map<String, String> researchValue = new HashMap<>();
+    private DataAdapterResult rvAdapter ;
+    private final Map<String, String> researchValue = new HashMap<>();
 
     @Nullable
     @Override
@@ -44,22 +40,22 @@ public class tabSearch_fragment extends Fragment   {
         View view = mInflater.inflate(R.layout.tabsearch_fragment, mContainer, false);
 
         Intent myintent = getActivity().getIntent();
-        mQueryTerm = myintent.getStringExtra("q");
-        mSection= myintent.getStringExtra("fq");
-        mBeginDate = myintent.getStringExtra("begin_date");
-        mEndDate = myintent.getStringExtra("end_date");
+        String queryTerm = myintent.getStringExtra("q");
+        String section = myintent.getStringExtra("fq");
+        String beginDate = myintent.getStringExtra("begin_date");
+        String endDate = myintent.getStringExtra("end_date");
 
-        if (mQueryTerm !=null) {
-            researchValue.put("q", mQueryTerm);
+        if (queryTerm !=null) {
+            researchValue.put("q", queryTerm);
         }
-        if (mSection !=null) {
-            researchValue.put("fq", mSection);
+        if (section !=null) {
+            researchValue.put("fq", section);
         }
-        if (mBeginDate !=null) {
-            researchValue.put("begin_date", mBeginDate);
+        if (beginDate !=null) {
+            researchValue.put("begin_date", beginDate);
         }
-        if (mEndDate !=null) {
-            researchValue.put("end_date", mEndDate);
+        if (endDate !=null) {
+            researchValue.put("end_date", endDate);
         }
 
         this.initUI4(view);
@@ -88,8 +84,7 @@ private void loadJSONResult(){
 
         call2.enqueue(new Callback<SearchResult>() {
             public void onResponse(Call<SearchResult> call, Response<SearchResult> response) {
-                SearchResult jsonResponse2 = response.body();
-                rvdata= jsonResponse2;
+                rvdata= response.body();
                 rvAdapter = new DataAdapterResult(rvdata, getContext());
                 rvFragment.setAdapter(rvAdapter);
             }

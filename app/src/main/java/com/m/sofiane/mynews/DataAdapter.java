@@ -4,15 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -30,18 +27,8 @@ import java.util.List;
  */
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
-    private List<News.Articles> results;
-    private Context context;
-    private String mPubDate;
-    private String mSectionSub;
-    private String mSection;
-    private String mSub;
-    private String mImage;
-    private String mImageMost;
-    private String url;
-    private Fragment tab1_fragment;
-    private Fragment tab2_fragment;
-    private Fragment tab3_fragment;
+    private final List<News.Articles> results;
+    private final Context context;
 
 
     public DataAdapter(List<News.Articles> results, Context context) {
@@ -53,43 +40,27 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     @Override
     public DataAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_row, parent, false);
-        final ViewHolder vHolder = new ViewHolder(view);
-        return vHolder;
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DataAdapter.ViewHolder holder, final int position) {
+
+        dateCalling(holder,position);
+
+        titleCalling(holder, position);
+
+        imageCalling (holder, position);
+
+    }
+
+    private void imageCalling(ViewHolder holder, final int position) {
         News.Articles current = results.get(position);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-        SimpleDateFormat str = new SimpleDateFormat("dd/mm/yyyy");
-        Date today = null;
-        try {
-            today = sdf.parse(current.getPublishedDate());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        mPubDate = str.format(today);
-        holder.CR_date.setText(mPubDate);
-
-        mSection = current.getSection();
-        mSub = current.getSubsection();
-
-        if (TextUtils.isEmpty(mSub)) {
-            mSub = "   ";
-        } else {
-            mSub = " > " + mSub;
-        }
-
-        mSectionSub = mSection + mSub;
-        holder.CR_category.setText(mSectionSub);
-        holder.CR_title.setText(current.getTitle());
-
         if (!current.getMultimedia().isEmpty())
             Glide.with(context).load(current.getMultimedia().get(0).getUrl()).into(holder.CR_multimedia);
         else {
             Glide.with(context).load(R.drawable.logonyta).into(holder.CR_multimedia);
         }
-
 
         holder.item_contact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,25 +74,59 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         });
     }
 
+    private void titleCalling(ViewHolder holder, int position) {
+        News.Articles current = results.get(position);
+        String section = current.getSection();
+        String sub = current.getSubsection();
+
+        if (TextUtils.isEmpty(sub)) {
+            sub = "   ";
+        } else {
+            sub = " > " + sub;
+        }
+
+        String sectionSub = section + sub;
+        holder.CR_category.setText(sectionSub);
+        holder.CR_title.setText(current.getTitle());
+    }
+
+    private void dateCalling(@NonNull DataAdapter.ViewHolder holder, final int position) {
+        News.Articles current = results.get(position);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat str = new SimpleDateFormat("dd/mm/yyyy");
+        Date today = null;
+        try {
+            today = sdf.parse(current.getPublishedDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String pubDate = str.format(today);
+        holder.CR_date.setText(pubDate);
+    }
+
+
     @Override
     public int getItemCount() {
         return results.size();
     }
 
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView CR_date, CR_title, CR_category;
-        private ImageView CR_multimedia;
-        private ConstraintLayout item_contact;
+        private final TextView CR_date;
+        private final TextView CR_title;
+        private final TextView CR_category;
+        private final ImageView CR_multimedia;
+        private final ConstraintLayout item_contact;
 
 
-        public ViewHolder(View itemview) {
+        ViewHolder(View itemview) {
             super(itemview);
-            item_contact = (ConstraintLayout) itemview.findViewById(R.id.contact_item_id);
-            CR_date = (TextView) itemview.findViewById(R.id.CR_date);
-            CR_title = (TextView) itemview.findViewById(R.id.CR_title);
-            CR_category = (TextView) itemview.findViewById(R.id.CR_category);
-            CR_multimedia = (ImageView) itemview.findViewById(R.id.imageURL);
+            item_contact = itemview.findViewById(R.id.contact_item_id);
+            CR_date = itemview.findViewById(R.id.CR_date);
+            CR_title = itemview.findViewById(R.id.CR_title);
+            CR_category = itemview.findViewById(R.id.CR_category);
+            CR_multimedia = itemview.findViewById(R.id.imageURL);
     }
 
-}
-    }
+
+    }}

@@ -230,7 +230,7 @@ public class SearchResult {
 
         }
 
-        public class Keyword {
+        class Keyword {
 
             @SerializedName("name")
             @Expose
@@ -317,7 +317,7 @@ public class SearchResult {
 
         }
 
-        public class Person {
+        class Person {
 
             @SerializedName("firstname")
             @Expose
@@ -410,7 +410,7 @@ public class SearchResult {
 
         }
 
-        public class Doc {
+        public static class Doc {
 
             @SerializedName("web_url")
             @Expose
@@ -702,10 +702,6 @@ public class SearchResult {
                 return url;
             }
 
-            public void setUrl(String url) {
-                this.url = url;
-            }
-
             public Integer getHeight() {
                 return height;
             }
@@ -722,29 +718,6 @@ public class SearchResult {
                 this.width = width;
             }
 
-            public Legacy getLegacy() {
-                return legacy;
-            }
-
-            public void setLegacy(Legacy legacy) {
-                this.legacy = legacy;
-            }
-
-            public String getSubType() {
-                return subType;
-            }
-
-            public void setSubType(String subType) {
-                this.subType = subType;
-            }
-
-            public Object getCropName() {
-                return cropName;
-            }
-
-            public void setCropName(Object cropName) {
-                this.cropName = cropName;
-            }
 
         }
 
@@ -753,226 +726,3 @@ public class SearchResult {
 
     }}
 
-/**
-
-
-    @SerializedName("url")
-    @Expose
-    private String url;
-    @SerializedName("adx_keywords")
-    @Expose
-    private String adxKeywords;
-    @SerializedName("column")
-    @Expose
-    private Object column;
-    @SerializedName("section")
-    @Expose
-    private String section;
-    @SerializedName("byline")
-    @Expose
-    private String byline;
-    @SerializedName("type")
-    @Expose
-    private String type;
-    @SerializedName("title")
-    @Expose
-    private String title;
-    @SerializedName("abstract")
-    @Expose
-    private String _abstract;
-    @SerializedName("published_date")
-    @Expose
-    private String publishedDate;
-    @SerializedName("source")
-    @Expose
-    private String source;
-    @SerializedName("id")
-    @Expose
-    private long id;
-    @SerializedName("asset_id")
-    @Expose
-    private long assetId;
-    @SerializedName("views")
-    @Expose
-    private Integer views;
-    @SerializedName("media")
-    @Expose
-    private List<Medium> medium = null;
-    @SerializedName("multimedia")
-    @Expose
-    private List<Multimedia.Multimedium> multimedia = null;
-    @SerializedName("short_url")
-    @Expose
-    private String shortUrl;
-    @SerializedName("subsection")
-    @Expose
-    private String subsection;
-    @SerializedName("web_url")
-    @Expose
-    private String webUrl;
-    @SerializedName("snippet")
-    @Expose
-    private String snippet;
-    @SerializedName("pub_date")
-    @Expose
-    private String pubDate;
-    @SerializedName("score")
-    @Expose
-    private Double score;
-    @SerializedName("headline")
-    @Expose
-    private News.Headline headline;
-
-    private String mshortUrl;
-    private String mTitle;
-
-
-    public SearchResult(String mmshortUrl, String mmTitle) {
-        mshortUrl = mmshortUrl;
-        mTitle = mmTitle;
-        }
-
-    public String getUrl() {
-        if (url == null){
-            return webUrl;
-        } else {
-            return url;
-        }
-    }
-        public void setUrl(String url) {
-            this.url = url;
-        }
-        public void setAdxKeywords(String adxKeywords) {
-            this.adxKeywords = adxKeywords;
-        }
-        public void setByline(String byline) {
-            this.byline = byline;
-        }
-        public void setSection(String section) {
-            this.section = section;
-        }
-        public void setType(String type) {
-            this.type = type;
-        }
-        public void setSource(String source) {
-            this.source = source;
-        }
-        public void setPublishedDate(String publishedDate) {
-            this.publishedDate = publishedDate;
-        }
-        public void setTitle(String title) {
-            this.title = title;
-        }
-        public void setMultimedia(List<Multimedia.Multimedium> multimedia) {
-            this.multimedia = multimedia;
-        }
-        public void setMedia(List<Medium> medium) {
-            this.medium = medium;
-        }
-    public String getAdxKeywords() {
-        return adxKeywords;
-    }
-    public Object getColumn() {
-        return column;
-    }
-    public String getSection() {
-        return section;
-    }
-    public String getByline() {
-        return byline;
-    }
-    public String getType() {
-        return type;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAbstract() {
-        return _abstract;
-    }
-    public String getPublishedDate() {
-        return publishedDate;
-    }
-    public String getSource() {
-        return source;
-    }
-
-    public long getId() {
-        return id;
-    }
-    public long getAssetId() {
-        return assetId;
-    }
-    public Integer getViews() {
-        return views;
-    }
-
-    public List<Medium> getMedium() {
-        return medium;
-    }
-    public List<Multimedia.Multimedium> getMultimedia() {
-        return multimedia;
-    }
-
-
-    public String getShortUrl() {
-        return shortUrl;
-    }
-
-    public void setShortUrl(String shortUrl) {
-        this.shortUrl = shortUrl;
-    }
-
-    public String getSubsection() {
-        return subsection;
-    }
-
-    public void setSubsection(String subsection) {
-        this.subsection = subsection;
-    }
-
-    public String getWebUrl() {
-        return webUrl;
-    }
-
-    public void setWebUrl(String webUrl) {
-        this.webUrl = webUrl;
-    }
-
-    public String getSnippet() {
-        return snippet;
-    }
-
-    public void setSnippet(String snippet) {
-        this.snippet = snippet;
-    }
-
-    public String getPubDate() {
-        return pubDate;
-    }
-
-    public void setPubDate(String pubDate) {
-        this.pubDate = pubDate;
-    }
-
-    public Double getScore() {
-        return score;
-    }
-
-    public void setScore(Double score) {
-        this.score = score;
-    }
-
-    public News.Headline getHeadline() {
-        return headline;
-    }
-
-    public void setHeadline(News.Headline headline) {
-        this.headline = headline;
-    }
-}
-
-
-    **/

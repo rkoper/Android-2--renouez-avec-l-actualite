@@ -17,17 +17,15 @@ import java.util.List;
 
 public class SubActivity extends AppCompatActivity {
     private List<News.Articles> rvdata1;
-    private WebView webView;
-    private String url;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subactivity);
 
-        url = getIntent().getStringExtra("url")  ;
+        String url = getIntent().getStringExtra("url");
 
 
-        webView = findViewById(R.id.text_view_result);
+        WebView webView = findViewById(R.id.text_view_result);
         webView.loadUrl(url);
 
         setPageTitle();

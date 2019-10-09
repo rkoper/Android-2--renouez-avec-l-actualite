@@ -12,13 +12,13 @@ public class News {
 
     @SerializedName("news")
     @Expose
-    private List<News2> news = null;
+    private final List<News2> news = null;
 
     public List<News2> getnews() {
         return news;
     }
 
-    public class News2 {}
+    private class News2 {}
 
     //@SerializedName("results")
     //@Expose
@@ -125,7 +125,7 @@ public class News {
 
         @SerializedName("media-metadata")
         @Expose
-        private List<MediaMetada> mediaMetadata = null;
+        private final List<MediaMetada> mediaMetadata = null;
 
         public List<MediaMetada> getMediaMetadata() {
             return mediaMetadata;
@@ -169,7 +169,7 @@ public class News {
 
     }
 
-    public class Doc{
+    class Doc{
         @SerializedName("web_url")
         @Expose
         private String webUrl;

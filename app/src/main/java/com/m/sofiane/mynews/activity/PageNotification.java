@@ -1,13 +1,11 @@
 package com.m.sofiane.mynews.activity;
 
 import android.app.AlarmManager;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -21,36 +19,16 @@ import com.m.sofiane.mynews.MyAlarm;
 import com.m.sofiane.mynews.R;
 import java.util.Calendar;
 
-import static android.view.View.GONE;
-
 public class PageNotification extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
-    protected String mQueryTerm;
-    private EditText mEditTextSearchTerm;
-    protected String mSection;
+    private String mSection;
     private Switch mSwitch;
-    private TextView mText;
-    protected String mArts;
-    protected String mBusiness;
-    protected String mEntrepreneurs;
-    protected String mPolitics;
-    protected String mSports;
-    protected String mTravel;
-    private String SEARCHWORD = "term";
-    private String SEARCHSECTION = "section";
-    private String SEArCHSWITCH = "switch";
-    private String ARTS = "arts";
-    private String BUSINESS = "business";
-    private String ENTREPRENEURS = "entrepreneurs";
-    private String POLITICS = "politics";
-    private String SPORTS = "sports";
-    private String TRAVEL = "travel";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_notification);
 
-        mSwitch = (Switch) findViewById(R.id.switchCheck);
+        mSwitch = findViewById(R.id.switchCheck);
         mSwitch.setOnCheckedChangeListener(this);
 
         configureToolBar();
@@ -78,7 +56,7 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-        mText = (TextView) findViewById(R.id.textView2);
+        TextView text = findViewById(R.id.textView2);
 
         if(mSwitch.isChecked()) {
             setAlarm();
@@ -94,7 +72,6 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
 
         cal.set(Calendar.HOUR_OF_DAY, 17);
         cal.set(Calendar.MINUTE, 19);
-        cal.set(Calendar.SECOND, 00);
 
 
         Intent notificationIntent = new Intent(getApplicationContext(), MyAlarm.class);
@@ -116,56 +93,77 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
         CheckBox sports;
         CheckBox travels;
 
-        mEditTextSearchTerm = (EditText) findViewById(R.id.editText_search_term2);
-        mQueryTerm = mEditTextSearchTerm.getText().toString();
+        EditText editTextSearchTerm = findViewById(R.id.editText_search_term2);
+        String queryTerm = editTextSearchTerm.getText().toString();
 
-        arts = (CheckBox) findViewById(R.id.checkBox_arts2);
-        buisness = (CheckBox) findViewById(R.id.checkBox_business2);
-        entrepreneurs = (CheckBox) findViewById(R.id.checkBox_entrepreneurs2);
-        politics = (CheckBox) findViewById(R.id.checkBox_politics2);
-        sports = (CheckBox) findViewById(R.id.checkBox_sports2);
-        travels = (CheckBox) findViewById(R.id.checkBox_travel2);
+        arts = findViewById(R.id.checkBox_arts2);
+        buisness = findViewById(R.id.checkBox_business2);
+        entrepreneurs = findViewById(R.id.checkBox_entrepreneurs2);
+        politics = findViewById(R.id.checkBox_politics2);
+        sports = findViewById(R.id.checkBox_sports2);
+        travels = findViewById(R.id.checkBox_travel2);
 
         SharedPreferences.Editor SaveBox = getSharedPreferences("My Box", MODE_PRIVATE).edit();
 
+        String arts1;
         if (arts.isChecked()) {
-            mArts = "\"arts\"";
+            arts1 = "\"arts\"";
         }
-        else {mArts="";}
-        SaveBox.putString(ARTS, mArts);
+        else {
+            arts1 ="";}
+        String ARTS = "arts";
+        SaveBox.putString(ARTS, arts1);
 
+        String business;
         if (buisness.isChecked()) {
-            mBusiness = "\"buisness\"";
+            business = "\"buisness\"";
         }
-        else {mBusiness="";}
+        else {
+            business ="";}
+        String BUSINESS = "business";
         SaveBox.putString(BUSINESS, mSection);
 
+        String entrepreneurs1;
         if (entrepreneurs.isChecked()) {
-            mEntrepreneurs = "\"entrepreneurs\""; }
-        else {mEntrepreneurs="";}
-        SaveBox.putString(ENTREPRENEURS, mEntrepreneurs);
+            entrepreneurs1 = "\"entrepreneurs\""; }
+        else {
+            entrepreneurs1 ="";}
+        String ENTREPRENEURS = "entrepreneurs";
+        SaveBox.putString(ENTREPRENEURS, entrepreneurs1);
 
+        String politics1;
         if (politics.isChecked()) {
-            mPolitics = "\"politics\""; }
-        else {mPolitics="";}
-        SaveBox.putString(POLITICS, mPolitics);
+            politics1 = "\"politics\""; }
+        else {
+            politics1 ="";}
+        String POLITICS = "politics";
+        SaveBox.putString(POLITICS, politics1);
 
+        String sports1;
         if (sports.isChecked()) {
-            mSports = "\"sports\""; }
-        else {mSports="";}
-        SaveBox.putString(SPORTS, mSports);
+            sports1 = "\"sports\""; }
+        else {
+            sports1 ="";}
+        String SPORTS = "sports";
+        SaveBox.putString(SPORTS, sports1);
 
+        String travel;
         if (travels.isChecked()) {
-            mTravel = "\"travels\""; }
-        else {mTravel="";}
-        SaveBox.putString(TRAVEL, mTravel);
+            travel = "\"travels\""; }
+        else {
+            travel ="";}
+        String TRAVEL = "travel";
+        SaveBox.putString(TRAVEL, travel);
 
-        mSection = "news_desk(" + mArts+mBusiness+mEntrepreneurs+mPolitics+mSports+mTravel;
+        mSection = "news_desk(" + arts1 + business + entrepreneurs1 + politics1 + sports1 + travel;
         mSection = mSection + ")";
 
         SharedPreferences.Editor saveChoice = getSharedPreferences("My settings", MODE_PRIVATE).edit();
-        saveChoice.putString(SEARCHWORD, mQueryTerm);
+        String SEARCHWORD = "term";
+        saveChoice.putString(SEARCHWORD, queryTerm);
+        String SEArCHSWITCH = "switch";
         saveChoice.putString(SEArCHSWITCH, String.valueOf(mSwitch));
+        String SEARCHSECTION = "section";
         saveChoice.putString(SEARCHSECTION, mSection);
         saveChoice.apply();
 
