@@ -64,7 +64,7 @@ public class goSearchArticles {
         return new TypeSafeMatcher<View>() {
             @Override
             public void describeTo(Description description) {
-                description.appendText("Child at position " + position + "  parent ");
+                description.appendText("Child at position " + position + " in parent ");
                 parentMatcher.describeTo(description);
             }
 
