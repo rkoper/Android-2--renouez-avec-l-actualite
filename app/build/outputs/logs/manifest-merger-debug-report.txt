@@ -99,7 +99,7 @@ MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/sofiane/.gradle/
 	android:roundIcon
 		ADDED from /Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/AndroidManifest.xml:14:9-54
 	android:icon
-		ADDED from /Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/AndroidManifest.xml:12:9-43
+		ADDED from /Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/AndroidManifest.xml:12:9-54
 	android:allowBackup
 		ADDED from /Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/AndroidManifest.xml:11:9-35
 	android:theme

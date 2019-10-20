@@ -1289,7 +1289,6 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
-id textView2
 id textViewAbout
 id textViewHelp
 id textView_begin_date
@@ -1425,6 +1424,7 @@ menu activity_main_drawer_drawer
 menu activity_main_menu
 menu activity_page_toolbar
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 string Toolbar_help
 string abc_action_bar_home_description

@@ -56,7 +56,6 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-        TextView text = findViewById(R.id.textView2);
 
         if(mSwitch.isChecked()) {
             setAlarm();
@@ -70,8 +69,8 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
 
         Calendar cal = Calendar.getInstance();
 
-        cal.set(Calendar.HOUR_OF_DAY, 17);
-        cal.set(Calendar.MINUTE, 19);
+        cal.set(Calendar.HOUR_OF_DAY, 18);
+        cal.set(Calendar.MINUTE, 05);
 
 
         Intent notificationIntent = new Intent(getApplicationContext(), MyAlarm.class);
