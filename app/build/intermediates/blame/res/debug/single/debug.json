@@ -1752,12 +1752,12 @@
         "source": "/Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/res/layout/app_bar_main_activity_drawer.xml"
     },
     {
-        "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/layout_design_menu_item_action_area.xml.flat",
-        "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/0c56117c765798ff244083ea4f578d6e/res/layout/design_menu_item_action_area.xml"
-    },
-    {
         "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
         "source": "/Users/sofiane/AndroidStudioProjects/MyNews/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/layout_design_menu_item_action_area.xml.flat",
+        "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/0c56117c765798ff244083ea4f578d6e/res/layout/design_menu_item_action_area.xml"
     },
     {
         "merged": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
