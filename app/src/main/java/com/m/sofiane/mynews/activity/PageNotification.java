@@ -157,7 +157,7 @@ public class PageNotification extends AppCompatActivity implements CompoundButto
         mSection = "news_desk(" + arts1 + business + entrepreneurs1 + politics1 + sports1 + travel;
         mSection = mSection + ")";
 
-        SharedPreferences.Editor saveChoice = getSharedPreferences("My settings", MODE_PRIVATE).edit();
+        SharedPreferences.Editor saveChoice = getSharedPreferences("My  settings", MODE_PRIVATE).edit();
         String SEARCHWORD = "term";
         saveChoice.putString(SEARCHWORD, queryTerm);
         String SEArCHSWITCH = "switch";
