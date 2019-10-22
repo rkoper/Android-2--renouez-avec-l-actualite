@@ -14,14 +14,14 @@ public class PageSearch$$ViewBinder<T extends PageSearch> implements ViewBinder<
   public Unbinder bind(final Finder finder, final T target, Object source) {
     InnerUnbinder unbinder = createUnbinder(target);
     View view;
-    view = finder.findRequiredView(source, 2131230954, "field 'beginDate'");
-    target.beginDate = finder.castView(view, 2131230954, "field 'beginDate'");
+    view = finder.findRequiredView(source, 2131230941, "field 'beginDate'");
+    target.beginDate = finder.castView(view, 2131230941, "field 'beginDate'");
     view = finder.findRequiredView(source, 2131230767, "field 'mButtonBeginDate'");
     target.mButtonBeginDate = finder.castView(view, 2131230767, "field 'mButtonBeginDate'");
     view = finder.findRequiredView(source, 2131230768, "field 'mButtonEndDate'");
     target.mButtonEndDate = finder.castView(view, 2131230768, "field 'mButtonEndDate'");
-    view = finder.findRequiredView(source, 2131230810, "field 'mEditTextSearchTerm'");
-    target.mEditTextSearchTerm = finder.castView(view, 2131230810, "field 'mEditTextSearchTerm'");
+    view = finder.findRequiredView(source, 2131230809, "field 'mEditTextSearchTerm'");
+    target.mEditTextSearchTerm = finder.castView(view, 2131230809, "field 'mEditTextSearchTerm'");
     view = finder.findRequiredView(source, 2131230769, "field 'mSearchButton'");
     target.mSearchButton = finder.castView(view, 2131230769, "field 'mSearchButton'");
     view = finder.findRequiredView(source, 2131230775, "field 'arts'");

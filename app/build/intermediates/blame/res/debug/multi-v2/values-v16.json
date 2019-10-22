@@ -4,7 +4,7 @@
             "outputFile": "/Users/sofiane/AndroidStudioProjects/MyNews/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/1e9179abc36fc0e1642a90eefafa2c32/res/values-v16/values-v16.xml",
+                    "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/35d0fae6a2ce451318c4a3b256f55dfe/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/9da3bfb6b14fac12e7262f89ad6ec56e/res/values-v16/values-v16.xml",
+                    "source": "/Users/sofiane/.gradle/caches/transforms-2/files-2.1/fc5f2360d14bab71ab4f6d802610acdd/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
