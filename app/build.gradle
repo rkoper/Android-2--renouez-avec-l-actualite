@@ -10,11 +10,8 @@ android {
         buildToolsVersion "28.0.3"
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-            multiDexEnabled true
-
-
+        multiDexEnabled true
     }
-
 
     buildTypes {
         release {
@@ -22,7 +19,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
 }
+
 
 
 dependencies {
