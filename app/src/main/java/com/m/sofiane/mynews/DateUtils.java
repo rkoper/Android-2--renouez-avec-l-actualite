@@ -23,7 +23,6 @@ import butterknife.BindView;
 /**
  * created by Sofiane M. 2019-10-09
  */
-@RequiresApi(api = Build.VERSION_CODES.O)
 public class DateUtils {
 
     private final static DateTimeFormatter searchedDateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssX");
