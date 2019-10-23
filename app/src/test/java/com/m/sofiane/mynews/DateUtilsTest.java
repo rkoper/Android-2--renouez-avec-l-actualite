@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * created by Sofiane M. 2019-
+ * created by Sofiane M.
  */
 public class DateUtilsTest {
     @Test
