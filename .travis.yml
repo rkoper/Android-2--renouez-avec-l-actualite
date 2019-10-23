@@ -7,6 +7,7 @@ env:
    - EMULATOR_API_LEVEL=22
    - ANDROID_BUILD_TOOLS_VERSION=28.0.3
    - ANDROID_ABI=armeabi-v7a
+   - ADB_INSTALL_TIMEOUT=20
 
 android:
   components:
@@ -26,5 +27,4 @@ before_script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-
 
