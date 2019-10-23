@@ -11,7 +11,7 @@ import org.junit.Test;
 import static junit.framework.TestCase.assertEquals;
 
 /**
- * created by Sofiane M.
+ * created by Sofiane M. 19/09/2019
  */
 public class newsArticles {
 
