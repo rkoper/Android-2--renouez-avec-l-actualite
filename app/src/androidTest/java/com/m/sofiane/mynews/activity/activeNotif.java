@@ -44,7 +44,7 @@ public class activeNotif {
                 allOf(withId(R.id.title), withText("Notifications"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.content),
+                                        withId(android.R.id.content),
                                         0),
                                 0),
                         isDisplayed()));
