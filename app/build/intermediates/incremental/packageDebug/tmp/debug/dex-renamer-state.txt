@@ -1,4 +1,4 @@
-#Wed Oct 23 03:16:08 CEST 2019
+#Wed Oct 23 05:02:01 CEST 2019
 base.0=/Users/sofiane/AndroidStudioProjects/MyNewsv2/app/build/intermediates/dex/debug/mergeExtDexDebug/out
 path.1=classes.dex
 renamed.1=classes2.dex
