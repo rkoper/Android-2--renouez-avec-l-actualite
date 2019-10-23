@@ -45,7 +45,7 @@ public class PageSearchResult extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Search Article");
+        getSupportActionBar().setTitle("Search Articles");
     }
     @Override
     public boolean onSupportNavigateUp() {

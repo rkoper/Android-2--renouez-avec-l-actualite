@@ -32,7 +32,7 @@ public class SectionPagerAdapter extends FragmentPagerAdapter {
                 return "MOST POPULAR";
 
             case 2:
-                return "SPORT";
+                return "SPORTS";
 
             default:
                 return "";
