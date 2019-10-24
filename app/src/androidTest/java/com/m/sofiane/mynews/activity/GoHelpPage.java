@@ -18,50 +18,35 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.swipeLeft;
-import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class GoArticleSports {
+public class GoHelpPage {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void goArticleSports() {
-        ViewInteraction tabView = onView(
-                allOf(withContentDescription("SPORTS"),
+    public void goHelpPage() {
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
+
+        ViewInteraction appCompatTextView = onView(
+                allOf(withId(R.id.title), withText("Help"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.tab_layout),
+                                        withId(R.id.content),
                                         0),
-                                2),
+                                0),
                         isDisplayed()));
-        tabView.perform(click());
-
-        ViewInteraction viewPager = onView(
-                allOf(withId(R.id.pager),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.drawer_layout),
-                                        0),
-                                3),
-                        isDisplayed()));
-        viewPager.perform(swipeLeft());
-
-        ViewInteraction recyclerView = onView(
-                allOf(withId(R.id.RecyclerViewThree),
-                        childAtPosition(
-                                withId(R.id.fragment3_container),
-                                0)));
-        recyclerView.perform(actionOnItemAtPosition(2, click()));
+        appCompatTextView.perform(click());
     }
 
     private static Matcher<View> childAtPosition(
