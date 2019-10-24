@@ -487,7 +487,6 @@ public class News {
         public void setKicker(String kicker) {
             this.kicker = kicker;
         }
-
     }
 
     public class Keywords{
