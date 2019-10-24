@@ -20,42 +20,48 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.swipeLeft;
+import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class TestDrawerLayout {
+public class GoArticleSports {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void testDrawerLayout() {
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withContentDescription("Open navigation drawer"),
+    public void goArticleSports() {
+        ViewInteraction tabView = onView(
+                allOf(withContentDescription("SPORTS"),
                         childAtPosition(
-                                allOf(withId(R.id.activity_main_toolbar),
-                                        childAtPosition(
-                                                withClassName(is("android.widget.RelativeLayout")),
-                                                1)),
-                                1),
-                        isDisplayed()));
-        appCompatImageButton.perform(click());
-
-        ViewInteraction navigationMenuItemView = onView(
-                allOf(childAtPosition(
-                        allOf(withId(R.id.design_navigation_view),
                                 childAtPosition(
-                                        withId(R.id.nav_view),
-                                        0)),
-                        4),
+                                        withId(R.id.tab_layout),
+                                        0),
+                                2),
                         isDisplayed()));
-        navigationMenuItemView.perform(click());
+        tabView.perform(click());
+
+        ViewInteraction viewPager = onView(
+                allOf(withId(R.id.pager),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.drawer_layout),
+                                        0),
+                                3),
+                        isDisplayed()));
+        viewPager.perform(swipeLeft());
+
+        ViewInteraction recyclerView = onView(
+                allOf(withId(R.id.RecyclerViewThree),
+                        childAtPosition(
+                                withId(R.id.fragment3_container),
+                                0)));
+        recyclerView.perform(actionOnItemAtPosition(2, click()));
     }
 
     private static Matcher<View> childAtPosition(
