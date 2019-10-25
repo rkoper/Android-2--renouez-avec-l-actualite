@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.m.sofiane.mynews.activity.SubActivity;
 import com.m.sofiane.mynews.modele.ModeleBase.News;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,6 +32,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     private final List<News.Articles> results;
     private final Context context;
+    private String mPubDate;
 
 
     public DataAdapter(List<News.Articles> results, Context context) {
@@ -45,16 +47,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull DataAdapter.ViewHolder holder, final int position) {
 
         dateCalling(holder,position);
-
         titleCalling(holder, position);
-
         imageCalling (holder, position);
-
     }
 
     private void imageCalling(ViewHolder holder, final int position) {
@@ -93,18 +91,24 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         holder.CR_title.setText(current.getTitle());
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public void dateCalling(@NonNull DataAdapter.ViewHolder holder, final int position) {
-        News.Articles current = results.get(position);
-        holder.CR_date.setText(DateUtils.parseNormaldDate(current.getPublishedDate()));
-    }
-
+            News.Articles current = results.get(position);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+            SimpleDateFormat str = new SimpleDateFormat("dd/mm/yyyy");
+            Date today = null;
+            try {
+                today = sdf.parse(current.getPublishedDate());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            mPubDate = str.format(today);
+            holder.CR_date.setText(mPubDate);
+        }
 
     @Override
     public int getItemCount() {
         return results.size();
     }
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView CR_date;

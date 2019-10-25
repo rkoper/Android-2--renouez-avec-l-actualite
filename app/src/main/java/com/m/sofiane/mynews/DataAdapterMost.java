@@ -31,6 +31,7 @@ public class DataAdapterMost extends RecyclerView.Adapter<DataAdapterMost.ViewHo
 
     private final List<News.Articles> results;
     private final Context context;
+    private String mPubDate;
 
 
     public DataAdapterMost(List<News.Articles> results, Context context) {
@@ -96,10 +97,18 @@ public class DataAdapterMost extends RecyclerView.Adapter<DataAdapterMost.ViewHo
         holder.CR_title.setText(current.getTitle());
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void dateCalling(ViewHolder holder, int position) {
         News.Articles current = results.get(position);
-        holder.CR_date.setText(DateUtils.parseMostPopularDate(current.getPublishedDate()));
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat str = new SimpleDateFormat("dd/mm/yyyy");
+        Date today = null;
+        try {
+            today = sdf.parse(current.getPublishedDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        mPubDate = str.format(today);
+        holder.CR_date.setText(mPubDate);
     }
 
     @Override

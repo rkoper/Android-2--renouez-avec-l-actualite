@@ -65,15 +65,11 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
 
 
 
-        holder.item_contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(contextSearch, SubActivity.class);
-                intent.putExtra("url", results1.getResponse().getDocs().get(position).getWebUrl());
+        holder.item_contact.setOnClickListener(view -> {
+            Intent intent = new Intent(contextSearch, SubActivity.class);
+            intent.putExtra("url", results1.getResponse().getDocs().get(position).getWebUrl());
 
-                contextSearch.startActivity(intent);
-            }
-
+            contextSearch.startActivity(intent);
         });
     }
 
@@ -93,7 +89,6 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
         holder.CR_title.setText(current.getSnippet());
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void dateCalling(ViewHolder holder, int position) {
         SearchResult.Doc current = results1.getResponse().getDocs().get(position);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
