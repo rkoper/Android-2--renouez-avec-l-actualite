@@ -68,15 +68,11 @@ public class DataAdapterMost extends RecyclerView.Adapter<DataAdapterMost.ViewHo
         }
 
 
-        holder.item_contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, SubActivity.class);
-                intent.putExtra("url", results.get(position).getUrl());
+        holder.item_contact.setOnClickListener(view -> {
+            Intent intent = new Intent(context, SubActivity.class);
+            intent.putExtra("url", results.get(position).getUrl());
 
-                context.startActivity(intent);
-            }
-
+            context.startActivity(intent);
         });
     }
 
