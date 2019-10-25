@@ -29,6 +29,7 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
 
     private final SearchResult results1;
     private final Context contextSearch;
+    private String mPubDate;
 
 
     public DataAdapterResult (SearchResult results1, Context context) {
@@ -43,8 +44,7 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
         return new ViewHolder(view);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    @SuppressLint("ResourceType")
+    @SuppressLint("NewApi")
     @Override
     public void onBindViewHolder(@NonNull DataAdapterResult.ViewHolder holder, final int position) {
         dateCalling(holder,position);
@@ -96,7 +96,16 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void dateCalling(ViewHolder holder, int position) {
         SearchResult.Doc current = results1.getResponse().getDocs().get(position);
-        holder.CR_date.setText(DateUtils.parseSearchedDate(current.getPubDate()));
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat str = new SimpleDateFormat("dd/mm/yyyy");
+        Date today = null;
+        try {
+            today = sdf.parse(current.getPubDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        mPubDate = str.format(today);
+        holder.CR_date.setText(mPubDate);
     }
 
     public int getItemCount() {
