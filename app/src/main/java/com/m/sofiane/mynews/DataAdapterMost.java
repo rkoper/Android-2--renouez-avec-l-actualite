@@ -89,7 +89,7 @@ public class DataAdapterMost extends RecyclerView.Adapter<DataAdapterMost.ViewHo
         if (TextUtils.isEmpty(sub)) {
             sub = "   ";
         } else {
-            sub = "> " + sub;
+            sub = " > " + sub;
         }
 
         String sectionSub = section + sub;
