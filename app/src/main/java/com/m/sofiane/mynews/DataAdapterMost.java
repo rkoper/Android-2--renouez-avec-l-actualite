@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+
 import com.bumptech.glide.Glide;
 import com.m.sofiane.mynews.activity.SubActivity;
 import com.m.sofiane.mynews.modele.ModeleBase.News;
