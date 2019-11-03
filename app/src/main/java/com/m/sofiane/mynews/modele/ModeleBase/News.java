@@ -22,7 +22,7 @@ public class News {
 
     //@SerializedName("results")
     //@Expose
-   // private List<Articles> results = null;
+    // private List<Articles> results = null;
     @SerializedName("response")
     @Expose
     private Response response;
@@ -34,7 +34,7 @@ public class News {
     }
 
     //public List<Articles> getResults() {
-      //  return results;
+    //  return results;
     // }
 
     public String getStatus() {
@@ -526,4 +526,3 @@ public class News {
     }
 
 }
-

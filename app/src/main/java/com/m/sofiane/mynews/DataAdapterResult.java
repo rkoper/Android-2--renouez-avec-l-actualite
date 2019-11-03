@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.m.sofiane.mynews.activity.SubActivity;
+import com.m.sofiane.mynews.modele.ModeleBase.News;
 import com.m.sofiane.mynews.modele.ModeleSearch.SearchResult;
 
 import java.text.ParseException;
@@ -90,18 +91,17 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
     }
 
     private void dateCalling(ViewHolder holder, int position) {
-        SearchResult.Doc current = results1.getResponse().getDocs().get(position);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-        SimpleDateFormat str = new SimpleDateFormat("dd/mm/yyyy");
-        Date today = null;
+        SearchResult.Doc  current = results1.getResponse().getDocs().get(position);
+        String mDate = current.getPubDate();
         try {
-            today = sdf.parse(current.getPubDate());
+            mDate = (String) DateUtils.simplifyDateFormat(mDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        mPubDate = str.format(today);
-        holder.CR_date.setText(mPubDate);
-    }
+        holder.CR_date.setText(mDate);
+
+
+}
 
     public int getItemCount() {
         return results1

@@ -97,17 +97,16 @@ public class DataAdapterMost extends RecyclerView.Adapter<DataAdapterMost.ViewHo
 
     private void dateCalling(ViewHolder holder, int position) {
         News.Articles current = results.get(position);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-        SimpleDateFormat str = new SimpleDateFormat("dd/mm/yyyy");
-        Date today = null;
+        String mDate = current.getPublishedDate();
         try {
-            today = sdf.parse(current.getPublishedDate());
+            mDate = (String) DateUtils.simplifyDateFormatMost(mDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        mPubDate = str.format(today);
-        holder.CR_date.setText(mPubDate);
+        holder.CR_date.setText(mDate);
+
     }
+
 
     @Override
     public int getItemCount() {

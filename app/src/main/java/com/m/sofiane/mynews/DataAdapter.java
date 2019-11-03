@@ -92,23 +92,23 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     }
 
     public void dateCalling(@NonNull DataAdapter.ViewHolder holder, final int position) {
-            News.Articles current = results.get(position);
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-            SimpleDateFormat str = new SimpleDateFormat("dd/mm/yyyy");
-            Date today = null;
-            try {
-                today = sdf.parse(current.getPublishedDate());
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            mPubDate = str.format(today);
-            holder.CR_date.setText(mPubDate);
+        News.Articles current = results.get(position);
+        String mDate = current.getPublishedDate();
+        try {
+            mDate = (String) DateUtils.simplifyDateFormat(mDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
+        holder.CR_date.setText(mDate);
+
+    }
+
 
     @Override
     public int getItemCount() {
         return results.size();
     }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView CR_date;

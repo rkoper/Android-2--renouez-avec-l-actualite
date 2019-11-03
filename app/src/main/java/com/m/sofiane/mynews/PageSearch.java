@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 import butterknife.BindView;
@@ -45,6 +46,7 @@ public class PageSearch extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener mDateSetListenerEnd;
     private String mDay;
     private String mMonth;
+    private String mDate;
 
 
 
@@ -85,48 +87,18 @@ public class PageSearch extends AppCompatActivity {
     }
 
     private void dateListenner() {
-        mDateSetListenerBegin = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int y, int m, int d) {
-                m = m+1;
-                if (m <= 9){
-                    mMonth = ""+0+m;
-                }else{
-                    mMonth = ""+m;}
-                if (d <= 9){
-                    mDay = ""+0+d;
-                }else{
-                    mDay = ""+d;}
+        mDateSetListenerBegin = (datePicker, y, m, d) -> {
+            mDate = DateUtils.dateStringLayoutFormat(y, m, d);
+            mButtonBeginDate.setText(mDate);
 
-                Log.d(TAG, "onDateSet : date" + mMonth + mDay + y);
-                String B = mDay + "/" + mMonth + "/" + y;
-                mButtonBeginDate.setText(B);
-
-                mBeginDate = y + "" + mMonth + "" + mDay;
-            }
+            mBeginDate = DateUtils.dateStringFormat(y, m, d);
         };
 
-        mDateSetListenerEnd = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int y, int m, int d) {
-                m = m + 1;
-                if (m <= 9) {
-                    mMonth = "" + 0 + m;
-                } else {
-                    mMonth = "" + m;
-                }
+        mDateSetListenerEnd = (datePicker, y, m, d) -> {
+                mDate = DateUtils.dateStringLayoutFormat(y, m, d);
+                mButtonEndDate.setText(mDate);
 
-                if (d <= 9) {
-                    mDay = "" + 0 + d;
-                } else {
-                    mDay = "" + d;
-                }
-                Log.d(TAG, "onDateSet : date" + mMonth + "" + mDay + "" + y);
-                String E = mDay + "/" + mMonth + "/" + y;
-                mButtonEndDate.setText(E);
-
-                mEndDate = y + "" + mMonth + "" + mDay;
-            }
+            mEndDate = DateUtils.dateStringFormat(y, m, d);
         };
     }
 
@@ -134,29 +106,23 @@ public class PageSearch extends AppCompatActivity {
         mButtonEndDate = findViewById(R.id.button_picker_end_date);
         mButtonBeginDate = findViewById(R.id.button_picker_begin_date);
 
-        mButtonBeginDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                final int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog dialog = new DatePickerDialog(PageSearch.this, mDateSetListenerBegin, year, month, day);
-                dialog.getWindow();
-                dialog.show();
-            }
+        mButtonBeginDate.setOnClickListener(v -> {
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            final int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog dialog = new DatePickerDialog(PageSearch.this, mDateSetListenerBegin, year, month, day);
+            dialog.getWindow();
+            dialog.show();
         });
-        mButtonEndDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                final int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog dialog = new DatePickerDialog(PageSearch.this, mDateSetListenerEnd, year, month, day);
-                dialog.getActionBar();
-                dialog.show();
-            }
+        mButtonEndDate.setOnClickListener(v -> {
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            final int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog dialog = new DatePickerDialog(PageSearch.this, mDateSetListenerEnd, year, month, day);
+            dialog.getActionBar();
+            dialog.show();
         });
 
     }
