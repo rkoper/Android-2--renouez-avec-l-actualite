@@ -41,7 +41,7 @@ public class ActivNotif {
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
 
         ViewInteraction appCompatTextView = onView(
-                allOf(withId(R.id.title), withText("Notifications "),
+                allOf(withId(R.id.title), withText("Notifications"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.content),
