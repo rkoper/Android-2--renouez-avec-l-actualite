@@ -1,4 +1,3 @@
 -keep class android.support.test.internal** { *; }
 -keep class org.junit.** { *; }
--keep com.m.sofiane.mynews.controler.activity; { *; }
--keep com.m.sofiane.mynews.controler.activity; { *; }
+-keep com.m.sofiane.mynews.** { *; }

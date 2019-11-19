@@ -18,58 +18,44 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-
-public class ActivNotif {
+public class GoAboutWhithDrawer {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void activNotif() {
-        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
-
-        ViewInteraction appCompatTextView = onView(
-                allOf(withId(R.id.title), withText("Notifications"),
+    public void goAboutWhithDrawer() {
+        ViewInteraction appCompatImageButton = onView(
+                allOf(withContentDescription("Open navigation drawer"),
                         childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.content),
-                                        0),
-                                0),
+                                allOf(withId(R.id.activity_main_toolbar),
+                                        childAtPosition(
+                                                withClassName(is("android.widget.RelativeLayout")),
+                                                1)),
+                                1),
                         isDisplayed()));
-        appCompatTextView.perform(click());
+        appCompatImageButton.perform(click());
 
-        ViewInteraction appCompatCheckBox = onView(
-                allOf(withId(R.id.checkBox_politics2), withText("Politics"),
-                        childAtPosition(
+        ViewInteraction navigationMenuItemView = onView(
+                allOf(childAtPosition(
+                        allOf(withId(R.id.design_navigation_view),
                                 childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        2),
-                                3),
+                                        withId(R.id.nav_view),
+                                        0)),
+                        6),
                         isDisplayed()));
-        appCompatCheckBox.perform(click());
-
-        ViewInteraction switch_ = onView(
-                allOf(withId(R.id.switchCheck), withText("Enable notifications (once per day)"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                4),
-                        isDisplayed()));
-        switch_.perform(click());
+        navigationMenuItemView.perform(click());
     }
 
     private static Matcher<View> childAtPosition(

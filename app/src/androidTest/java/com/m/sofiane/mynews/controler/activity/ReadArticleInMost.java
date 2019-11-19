@@ -18,58 +18,50 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.swipeLeft;
+import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-
-public class ActivNotif {
+public class ReadArticleInMost {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void activNotif() {
-        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
-
-        ViewInteraction appCompatTextView = onView(
-                allOf(withId(R.id.title), withText("Notifications"),
+    public void readArticleInMost() {
+        ViewInteraction tabView = onView(
+                allOf(withContentDescription("MOST POPULAR"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.content),
+                                        withId(R.id.tab_layout),
                                         0),
-                                0),
+                                1),
                         isDisplayed()));
-        appCompatTextView.perform(click());
+        tabView.perform(click());
 
-        ViewInteraction appCompatCheckBox = onView(
-                allOf(withId(R.id.checkBox_politics2), withText("Politics"),
+        ViewInteraction viewPager = onView(
+                allOf(withId(R.id.pager),
                         childAtPosition(
                                 childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        2),
+                                        withId(R.id.drawer_layout),
+                                        0),
                                 3),
                         isDisplayed()));
-        appCompatCheckBox.perform(click());
+        viewPager.perform(swipeLeft());
 
-        ViewInteraction switch_ = onView(
-                allOf(withId(R.id.switchCheck), withText("Enable notifications (once per day)"),
+        ViewInteraction recyclerView = onView(
+                allOf(withId(R.id.RecyclerViewTwo),
                         childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                4),
-                        isDisplayed()));
-        switch_.perform(click());
+                                withId(R.id.fragment2_container),
+                                0)));
+        recyclerView.perform(actionOnItemAtPosition(8, click()));
     }
 
     private static Matcher<View> childAtPosition(
