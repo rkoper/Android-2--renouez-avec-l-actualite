@@ -92,7 +92,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         News.Articles current = results.get(position);
         String mDate = current.getPublishedDate();
         try {
-            mDate = (String) DateUtils.simplifyDateFormat(mDate);
+            mDate = DateUtils.simplifyDateFormat(mDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }

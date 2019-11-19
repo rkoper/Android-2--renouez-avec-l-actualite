@@ -14,7 +14,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:background="@android:color/holo_blue_dark"
         android:minHeight="?attr/actionBarSize"
-        app:titleTextColor="@android:color/white"/>
+        app:titleTextColor="@android:color/white" />
     <EditText
         android:id="@+id/textViewAbout"
         android:layout_width="match_parent"

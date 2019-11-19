@@ -91,7 +91,7 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
         SearchResult.Doc  current = results1.getResponse().getDocs().get(position);
         String mDate = current.getPubDate();
         try {
-            mDate = (String) DateUtils.simplifyDateFormat(mDate);
+            mDate = DateUtils.simplifyDateFormat(mDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }

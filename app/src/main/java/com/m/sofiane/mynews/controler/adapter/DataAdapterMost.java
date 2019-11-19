@@ -99,7 +99,7 @@ public class DataAdapterMost extends RecyclerView.Adapter<DataAdapterMost.ViewHo
         News.Articles current = results.get(position);
         String mDate = current.getPublishedDate();
         try {
-            mDate = (String) DateUtils.simplifyDateFormatMost(mDate);
+            mDate = DateUtils.simplifyDateFormatMost(mDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
