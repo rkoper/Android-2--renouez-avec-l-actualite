@@ -1,5 +1,7 @@
 package com.m.sofiane.mynews;
 
+import com.m.sofiane.mynews.utils.DateUtils;
+
 import org.junit.Test;
 
 import java.text.ParseException;
