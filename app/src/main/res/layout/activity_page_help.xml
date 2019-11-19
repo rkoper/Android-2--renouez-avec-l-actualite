@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".controler.activity.PageHelp">
 
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/simple_toolbar"
         android:layout_height="?attr/actionBarSize"
@@ -17,7 +18,10 @@
         android:minHeight="?attr/actionBarSize"
         app:titleTextColor="@android:color/white"
         android:layout_width="match_parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+       />
 
     <EditText
         android:id="@+id/textViewHelp"
