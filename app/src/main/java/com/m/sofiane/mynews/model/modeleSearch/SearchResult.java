@@ -1,4 +1,4 @@
-package com.m.sofiane.mynews.model.ModeleSearch;
+package com.m.sofiane.mynews.model.modeleSearch;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -279,7 +279,7 @@ public class SearchResult {
 
         }
 
-        public class Legacy {
+        class Legacy {
 
             @SerializedName("thumbnailheight")
             @Expose

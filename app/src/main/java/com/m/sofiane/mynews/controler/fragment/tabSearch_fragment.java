@@ -2,6 +2,7 @@ package com.m.sofiane.mynews.controler.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.m.sofiane.mynews.controler.adapter.DataAdapterResult;
-import com.m.sofiane.mynews.model.ModeleSearch.SearchResult;
+import com.m.sofiane.mynews.model.modeleSearch.SearchResult;
 import com.m.sofiane.mynews.services.NYTimesService;
 import com.m.sofiane.mynews.R;
 
@@ -36,7 +37,7 @@ public class tabSearch_fragment extends Fragment   {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater mInflater, @Nullable ViewGroup mContainer, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater mInflater, @Nullable ViewGroup mContainer, @Nullable Bundle savedInstanceState) {
         View view = mInflater.inflate(R.layout.tabsearch_fragment, mContainer, false);
 
         Intent myintent = getActivity().getIntent();
@@ -83,14 +84,14 @@ private void loadJSONResult(){
         Call<SearchResult> call2 = request.getJSON4(researchValue);
 
         call2.enqueue(new Callback<SearchResult>() {
-            public void onResponse(Call<SearchResult> call, Response<SearchResult> response) {
+            public void onResponse(@NonNull Call<SearchResult> call, @NonNull Response<SearchResult> response) {
                 rvdata= response.body();
                 rvAdapter = new DataAdapterResult(rvdata, getContext());
                 rvFragment.setAdapter(rvAdapter);
             }
 
             @Override
-            public void onFailure(Call<SearchResult> call, Throwable t) {
+            public void onFailure(@NonNull Call<SearchResult> call, @NonNull Throwable t) {
                 Log.d("Error", t.getMessage());
             }
         });

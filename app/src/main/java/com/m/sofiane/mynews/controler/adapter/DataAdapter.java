@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import com.m.sofiane.mynews.utils.DateUtils;
 import com.m.sofiane.mynews.R;
 import com.m.sofiane.mynews.controler.activity.SubActivity;
-import com.m.sofiane.mynews.model.ModeleBase.News;
+import com.m.sofiane.mynews.model.modeleBase.News;
 
 import java.text.ParseException;
 import java.util.List;
@@ -29,7 +29,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     private final List<News.Articles> results;
     private final Context context;
-    private String mPubDate;
 
 
     public DataAdapter(List<News.Articles> results, Context context) {
@@ -60,15 +59,11 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             Glide.with(context).load(R.drawable.logonyta).into(holder.CR_multimedia);
         }
 
-        holder.item_contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, SubActivity.class);
-                intent.putExtra("url", results.get(position).getUrl());
+        holder.item_contact.setOnClickListener(view -> {
+            Intent intent = new Intent(context, SubActivity.class);
+            intent.putExtra("url", results.get(position).getUrl());
 
-                context.startActivity(intent);
-            }
-
+            context.startActivity(intent);
         });
     }
 
@@ -88,7 +83,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         holder.CR_title.setText(current.getTitle());
     }
 
-    public void dateCalling(@NonNull DataAdapter.ViewHolder holder, final int position) {
+    private void dateCalling(@NonNull DataAdapter.ViewHolder holder, final int position) {
         News.Articles current = results.get(position);
         String mDate = current.getPublishedDate();
         try {

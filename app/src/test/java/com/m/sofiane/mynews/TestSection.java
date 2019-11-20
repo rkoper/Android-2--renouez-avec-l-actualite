@@ -2,8 +2,6 @@ package com.m.sofiane.mynews;
 
 import org.junit.Test;
 
-import java.text.ParseException;
-
 import static org.junit.Assert.assertEquals;
 
 /**

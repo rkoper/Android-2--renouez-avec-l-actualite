@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
 
 
-import com.m.sofiane.mynews.model.ModeleBase.News;
+import com.m.sofiane.mynews.model.modeleBase.News;
 import com.m.sofiane.mynews.R;
 
 import java.util.List;

@@ -8,12 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.m.sofiane.mynews.R;
 import com.m.sofiane.mynews.controler.activity.MainActivity;
-import com.m.sofiane.mynews.model.ModeleSearch.SearchResult;
+import com.m.sofiane.mynews.model.modeleSearch.SearchResult;
 import com.m.sofiane.mynews.services.NYTimesService;
 
 import java.text.SimpleDateFormat;
@@ -78,14 +79,14 @@ public class MyAlarm  extends BroadcastReceiver {
         call2.enqueue(new Callback<SearchResult>() {
 
             @Override
-            public void onResponse(Call<SearchResult> call2, Response<SearchResult> response) {
+            public void onResponse(@NonNull Call<SearchResult> call2, @NonNull Response<SearchResult> response) {
                 SearchResult jsonResponse2 = response.body();
                 mNumArticle = jsonResponse2.getResponse().getDocs().size();
                 createNotif();
             }
 
             @Override
-            public void onFailure(Call<SearchResult> call, Throwable t) { Log.d("Error", t.getMessage());
+            public void onFailure(@NonNull Call<SearchResult> call, @NonNull Throwable t) { Log.d("Error", t.getMessage());
             }
         });
     }

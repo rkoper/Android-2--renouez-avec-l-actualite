@@ -20,7 +20,7 @@ import com.bumptech.glide.Glide;
 import com.m.sofiane.mynews.utils.DateUtils;
 import com.m.sofiane.mynews.R;
 import com.m.sofiane.mynews.controler.activity.SubActivity;
-import com.m.sofiane.mynews.model.ModeleBase.News;
+import com.m.sofiane.mynews.model.modeleBase.News;
 
 import java.text.ParseException;
 import java.util.List;
@@ -33,7 +33,6 @@ public class DataAdapterMost extends RecyclerView.Adapter<DataAdapterMost.ViewHo
 
     private final List<News.Articles> results;
     private final Context context;
-    private String mPubDate;
 
 
     public DataAdapterMost(List<News.Articles> results, Context context) {

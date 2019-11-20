@@ -1,6 +1,6 @@
 package com.m.sofiane.mynews.model;
 
-import com.m.sofiane.mynews.model.ModeleBase.News;
+import com.m.sofiane.mynews.model.modeleBase.News;
 
 /**
  * created by Sofiane M. 06/08/2019

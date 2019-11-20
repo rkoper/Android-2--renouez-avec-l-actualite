@@ -17,6 +17,7 @@ import com.m.sofiane.mynews.utils.DateUtils;
 import com.m.sofiane.mynews.R;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 import butterknife.BindView;
 
@@ -67,23 +68,21 @@ public class PageSearch extends AppCompatActivity {
     private void searchOption() {
         mSearchButton = findViewById(R.id.button_search);
 
-        mSearchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!CheckCheckBox()) {
-                    Toast.makeText(getBaseContext(), "Please Choose category", Toast.LENGTH_LONG).show();
-                }
-                else
-                { mSearchButton.setVisibility(View.VISIBLE);
-                    Intent myIntent = new Intent(PageSearch.this,
-                            PageSearchResult.class);
-                    retrieveSettings();
-                    myIntent.putExtra("fq", mSection);
-                    myIntent.putExtra("q", mQueryTerm);
-                    myIntent.putExtra("begin_date", mBeginDate);
-                    myIntent.putExtra("end_date", mEndDate);
-                    startActivity(myIntent);}
-            }});
+        mSearchButton.setOnClickListener(view -> {
+            if (CheckCheckBox()) {
+                Toast.makeText(getBaseContext(), "Please Choose category", Toast.LENGTH_LONG).show();
+            }
+            else
+            { mSearchButton.setVisibility(View.VISIBLE);
+                Intent myIntent = new Intent(PageSearch.this,
+                        PageSearchResult.class);
+                retrieveSettings();
+                myIntent.putExtra("fq", mSection);
+                myIntent.putExtra("q", mQueryTerm);
+                myIntent.putExtra("begin_date", mBeginDate);
+                myIntent.putExtra("end_date", mEndDate);
+                startActivity(myIntent);}
+        });
     }
 
     private void dateListenner() {
@@ -180,7 +179,7 @@ public class PageSearch extends AppCompatActivity {
         }
 
 
-        if (mSection == "news_desk()") {
+        if (Objects.equals(mSection, "news_desk()")) {
             mSection = null;
         } else {
             mSection = mSection + ")";
@@ -196,7 +195,7 @@ public class PageSearch extends AppCompatActivity {
             sports = findViewById(R.id.checkBox_sports);
             travels = findViewById(R.id.checkBox_travel);
 
-            return arts.isChecked() || buisness.isChecked() || entrepreneurs.isChecked() || politics.isChecked() || sports.isChecked() || travels.isChecked();
+            return !arts.isChecked() && !buisness.isChecked() && !entrepreneurs.isChecked() && !politics.isChecked() && !sports.isChecked() && !travels.isChecked();
     }
 }
 

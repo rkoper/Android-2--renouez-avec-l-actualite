@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import com.m.sofiane.mynews.utils.DateUtils;
 import com.m.sofiane.mynews.R;
 import com.m.sofiane.mynews.controler.activity.SubActivity;
-import com.m.sofiane.mynews.model.ModeleSearch.SearchResult;
+import com.m.sofiane.mynews.model.modeleSearch.SearchResult;
 
 import java.text.ParseException;
 
@@ -27,7 +27,6 @@ public class DataAdapterResult extends RecyclerView.Adapter<DataAdapterResult.Vi
 
     private final SearchResult results1;
     private final Context contextSearch;
-    private String mPubDate;
 
 
     public DataAdapterResult (SearchResult results1, Context context) {

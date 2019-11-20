@@ -1,7 +1,7 @@
 package com.m.sofiane.mynews.services;
 
 import com.m.sofiane.mynews.model.JSONResponse;
-import com.m.sofiane.mynews.model.ModeleSearch.SearchResult;
+import com.m.sofiane.mynews.model.modeleSearch.SearchResult;
 
 import java.util.Map;
 
