@@ -20,53 +20,53 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.swipeLeft;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class DrawerTest {
+public class CheckSearchDate {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void drawerTest() {
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withContentDescription("Open navigation drawer"),
+    public void checkSearchDate() {
+        ViewInteraction actionMenuItemView = onView(
+                allOf(withId(R.id.menu_activity_search), withContentDescription("Search"),
                         childAtPosition(
-                                allOf(withId(R.id.activity_main_toolbar),
+                                childAtPosition(
+                                        withId(R.id.activity_main_toolbar),
+                                        2),
+                                0),
+                        isDisplayed()));
+        actionMenuItemView.perform(click());
+
+        ViewInteraction appCompatTextView = onView(
+                allOf(withId(R.id.button_picker_begin_date), withText("Begin date"),
+                        childAtPosition(
+                                allOf(withId(R.id.search_fragment_container),
                                         childAtPosition(
-                                                withClassName(is("android.widget.RelativeLayout")),
+                                                withClassName(is("android.widget.LinearLayout")),
                                                 1)),
                                 1),
                         isDisplayed()));
-        appCompatImageButton.perform(click());
+        appCompatTextView.perform(click());
 
-        ViewInteraction navigationMenuItemView = onView(
-                allOf(childAtPosition(
-                        allOf(withId(R.id.design_navigation_view),
-                                childAtPosition(
-                                        withId(R.id.nav_view),
-                                        0)),
-                        3),
-                        isDisplayed()));
-        navigationMenuItemView.perform(click());
-
-        ViewInteraction viewPager = onView(
-                allOf(withId(R.id.pager),
+        ViewInteraction appCompatButton = onView(
+                allOf(withId(android.R.id.button1), withText("OK"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.drawer_layout),
+                                        withClassName(is("android.widget.ScrollView")),
                                         0),
-                                3),
-                        isDisplayed()));
-        viewPager.perform(swipeLeft());
+                                3)));
+        appCompatButton.perform(scrollTo(), click());
     }
 
     private static Matcher<View> childAtPosition(
