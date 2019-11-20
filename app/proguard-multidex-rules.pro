@@ -1,4 +1,3 @@
 -keep class android.support.test.internal** { *; }
 -keep class org.junit.** { *; }
 -keep @org.junit.runner.RunWith public class *
--keep classe com.m.sofiane.mynews
