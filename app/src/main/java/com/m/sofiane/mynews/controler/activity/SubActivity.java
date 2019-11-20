@@ -11,9 +11,6 @@ import com.m.sofiane.mynews.R;
 
 import java.util.List;
 
-/**
- * created by Sofiane M. 2019-08-21
- */
 
 public class SubActivity extends AppCompatActivity {
     private List<News.Articles> rvdata1;
@@ -38,7 +35,7 @@ public class SubActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Articles");
+        getSupportActionBar().setTitle("Articles ");
     }
     @Override
     public boolean onSupportNavigateUp() {
