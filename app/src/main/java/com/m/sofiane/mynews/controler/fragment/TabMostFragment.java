@@ -1,6 +1,5 @@
 package com.m.sofiane.mynews.controler.fragment;
 
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.m.sofiane.mynews.controler.adapter.DataAdapter;
+import com.m.sofiane.mynews.controler.adapter.DataAdapterMost;
 import com.m.sofiane.mynews.model.JSONResponse;
 import com.m.sofiane.mynews.model.modeleBase.News;
 import com.m.sofiane.mynews.services.NYTimesService;
@@ -29,30 +28,30 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class tab1_fragment  extends Fragment   {
+public class TabMostFragment extends Fragment {
     private RecyclerView rvFragment;
-    private List<News.Articles> rvdata;
-    private DataAdapter rvAdapter ;
-
+    private List<News.Articles> rvData;
+    private DataAdapterMost rvAdapter ;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater mInflater, @Nullable ViewGroup mContainer, @Nullable Bundle savedInstanceState) {
-        View view = mInflater.inflate(R.layout.tab1_fragment, mContainer, false);
 
-        this.initUI(view);
-        return view;
+        View view1 = mInflater.inflate(R.layout.tab2_fragment, mContainer, false);
+
+        this.initUI2(view1);
+        return view1;
 
     }
 
-    private void  initUI(View view) {
-        this.rvdata = new ArrayList<>();
-        this.rvAdapter = new DataAdapter(this.rvdata, getContext());
-        rvFragment = view.findViewById(R.id.RecyclerViewOne);
+
+    private void  initUI2(View view) {
+        this.rvData = new ArrayList<>();
+        this.rvAdapter = new DataAdapterMost(this.rvData, getContext());
+        rvFragment = view.findViewById(R.id.RecyclerViewTwo);
         rvFragment.setAdapter(rvAdapter);
         rvFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvFragment.setHasFixedSize(true);
         loadJSON();
-
     }
 
     private void loadJSON(){
@@ -61,14 +60,14 @@ public class tab1_fragment  extends Fragment   {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-
-        final NYTimesService request = retrofit.create(NYTimesService.class);
-        Call<JSONResponse> call = request.getJSON();
+        NYTimesService request = retrofit.create(NYTimesService.class);
+        Call<JSONResponse> call = request.getJSON2();
         call.enqueue(new Callback<JSONResponse>() {
+            @Override
             public void onResponse(@NonNull Call<JSONResponse> call, @NonNull Response<JSONResponse> response) {
                 JSONResponse jsonResponse = response.body();
-                rvdata= Arrays.asList(jsonResponse.getResults());
-                rvAdapter = new DataAdapter(rvdata,getContext());
+                rvData = new ArrayList<>(Arrays.asList(jsonResponse.getResults()));
+                rvAdapter = new DataAdapterMost(rvData, getContext());
                 rvFragment.setAdapter(rvAdapter);
 
 
@@ -77,6 +76,7 @@ public class tab1_fragment  extends Fragment   {
             @Override
             public void onFailure(@NonNull Call<JSONResponse> call, @NonNull Throwable t) {
                 Log.d("Error", t.getMessage());
+
             }
         });
     }

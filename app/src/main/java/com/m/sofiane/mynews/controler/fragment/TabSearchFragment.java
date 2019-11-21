@@ -29,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * created by Sofiane M. 2019-09-05
  */
-public class tabSearch_fragment extends Fragment   {
+public class TabSearchFragment extends Fragment   {
     private RecyclerView rvFragment;
     private SearchResult rvdata;
     private DataAdapterResult rvAdapter ;

@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.m.sofiane.mynews.R;
-import com.m.sofiane.mynews.controler.fragment.tabSearch_fragment;
+import com.m.sofiane.mynews.controler.fragment.TabSearchFragment;
 
 import butterknife.BindView;
 
@@ -29,7 +29,7 @@ public class PageSearchResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Fragment mFragment;
-        mFragment = new tabSearch_fragment();
+        mFragment = new TabSearchFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.SearchResult, mFragment).commit();

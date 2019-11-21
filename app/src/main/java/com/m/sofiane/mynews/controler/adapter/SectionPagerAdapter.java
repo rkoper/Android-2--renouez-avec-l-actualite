@@ -4,9 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.m.sofiane.mynews.controler.fragment.tab1_fragment;
-import com.m.sofiane.mynews.controler.fragment.tab2_fragment;
-import com.m.sofiane.mynews.controler.fragment.tab3_fragment;
+import com.m.sofiane.mynews.controler.fragment.TabTopFragment;
+import com.m.sofiane.mynews.controler.fragment.TabMostFragment;
+import com.m.sofiane.mynews.controler.fragment.TabSportFragment;
 
 /**
  * created by Sofiane M. 20/06/2019
@@ -17,9 +17,9 @@ public class SectionPagerAdapter extends FragmentPagerAdapter {
         super(mFm);
     }
 
-    private final tab1_fragment tabOne = new tab1_fragment();
-    private final tab2_fragment tabTwo = new tab2_fragment();
-    private final tab3_fragment tabThree = new tab3_fragment();
+    private final TabTopFragment tabOne = new TabTopFragment();
+    private final TabMostFragment tabTwo = new TabMostFragment();
+    private final TabSportFragment tabThree = new TabSportFragment();
 
     @Override
     public String getPageTitle (int position) {

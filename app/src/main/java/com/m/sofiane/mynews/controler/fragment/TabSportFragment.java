@@ -29,7 +29,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class tab3_fragment  extends Fragment {
+public class TabSportFragment extends Fragment {
     private RecyclerView rvFragment;
     private List<News.Articles> rvData;
     private DataAdapter rvAdapter ;
